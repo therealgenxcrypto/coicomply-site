@@ -14,6 +14,10 @@
   let auditRequested = false;
   let lastFocus = null;
   let activeUserId = null;
+  let uploadCount = 0;
+
+  const TRIAL_LIMIT = 10;
+  const remainingUploads = () => Math.max(TRIAL_LIMIT - uploadCount, 0);
 
   const showToast = (message) => {
     toast.textContent = message;
@@ -32,6 +36,11 @@
   const openUploadModal = () => {
     if (!activeUserId) {
       window.location.href = 'auth.html?mode=signin&next=index.html';
+      return;
+    }
+    if (remainingUploads() === 0) {
+      uploadStatus.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
+      showToast('Your free trial upload limit has already been reached.');
       return;
     }
     if (!auditRequested) {
@@ -58,10 +67,15 @@
       uploadStatus.textContent = 'Upload service is still loading. Try again in a moment.';
       return;
     }
+    const remaining = remainingUploads();
+    if (remaining === 0) {
+      uploadStatus.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
+      return;
+    }
 
     const dialog = window.uploadcare.openDialog(null, {
       multiple: true,
-      multipleMax: 10,
+      multipleMax: remaining,
       imagesOnly: false,
       tabs: 'file gdrive dropbox',
     });
@@ -71,6 +85,10 @@
     dialog.done((fileGroup) => {
       fileGroup.promise().done(async (groupInfo) => {
         const urls = (groupInfo.files || []).map((file) => file.cdnUrl).filter(Boolean);
+        if (urls.length > remaining) {
+          uploadStatus.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining free trial allowance.`;
+          return;
+        }
         if (supabase && activeUserId && urls.length) {
           const payload = (groupInfo.files || []).filter((file) => file.cdnUrl).map((file) => ({
             user_id: activeUserId,
@@ -81,9 +99,12 @@
           }));
           const { error } = await supabase.from('document_uploads').insert(payload);
           if (error) {
-            uploadStatus.textContent = `Upload provider succeeded but account association failed: ${error.message}`;
+            uploadStatus.textContent = error.message.toLowerCase().includes('free trial upload limit')
+              ? 'Your free trial upload limit has been reached. We will review the documents already received.'
+              : `Upload provider succeeded but account association failed: ${error.message}`;
             return;
           }
+          uploadCount += urls.length;
         }
         uploadedFileUrls.value = urls.join('\n');
         uploadStatus.innerHTML = `<strong>${urls.length} file${urls.length === 1 ? '' : 's'} received.</strong><br>We’ll review your documents and email your sample report back.`;
@@ -149,17 +170,29 @@
   });
 
   if (supabase) {
-    supabase.auth.getUser().then(({ data }) => {
+    const refreshUploadCount = async () => {
+      if (!activeUserId) return;
+      const { count } = await supabase
+        .from('document_uploads')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', activeUserId);
+      uploadCount = count || 0;
+    };
+
+    supabase.auth.getUser().then(async ({ data }) => {
       activeUserId = data.user?.id || null;
       if (!activeUserId) return;
+      await refreshUploadCount();
       navUploadButton.hidden = false;
     });
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       activeUserId = session?.user?.id || null;
       if (!activeUserId) {
+        uploadCount = 0;
         navUploadButton.hidden = true;
         return;
       }
+      await refreshUploadCount();
       navUploadButton.hidden = false;
     });
   }

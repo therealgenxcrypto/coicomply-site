@@ -4,6 +4,12 @@
   const status = document.getElementById('uploadStatus');
   const toast = document.getElementById('toast');
   const logout = document.getElementById('logoutButton');
+  const trialRemainingCount = document.getElementById('trialRemainingCount');
+  const trialUsageText = document.getElementById('trialUsageText');
+
+  const TRIAL_LIMIT = 10;
+  let currentUser = null;
+  let uploadCount = 0;
 
   const showToast = (message) => {
     toast.textContent = message;
@@ -17,6 +23,35 @@
     return;
   }
 
+  const renderTrialState = () => {
+    const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
+    trialRemainingCount.textContent = `${remaining} upload${remaining === 1 ? '' : 's'} remaining`;
+    trialUsageText.textContent = `${Math.min(uploadCount, TRIAL_LIMIT)} of ${TRIAL_LIMIT} free trial uploads used.`;
+    if (remaining === 0) {
+      dropzone.classList.add('is-disabled');
+      status.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
+      return;
+    }
+    dropzone.classList.remove('is-disabled');
+    status.textContent = `Ready for up to ${remaining} more file${remaining === 1 ? '' : 's'}.`;
+  };
+
+  const refreshUploadCount = async () => {
+    if (!currentUser) return;
+    const { count, error } = await supabase
+      .from('document_uploads')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', currentUser.id);
+
+    if (error) {
+      status.textContent = `Could not load upload allowance: ${error.message}`;
+      return;
+    }
+
+    uploadCount = count || 0;
+    renderTrialState();
+  };
+
   logout?.addEventListener('click', async () => {
     await supabase.auth.signOut({ scope: 'local' });
     window.location.href = 'index.html';
@@ -27,15 +62,20 @@
       status.textContent = 'Upload service is still loading. Try again in a moment.';
       return;
     }
-    const { data } = await supabase.auth.getUser();
-    if (!data.user) {
+    if (!currentUser) {
       window.location.href = 'auth.html?mode=signin&next=upload.html';
+      return;
+    }
+    const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
+    if (remaining === 0) {
+      renderTrialState();
+      showToast('Your free trial upload limit has already been reached.');
       return;
     }
 
     const dialog = window.uploadcare.openDialog(null, {
       multiple: true,
-      multipleMax: 10,
+      multipleMax: remaining,
       imagesOnly: false,
       tabs: 'file gdrive dropbox',
     });
@@ -56,8 +96,13 @@
           return;
         }
 
+        if (files.length > remaining) {
+          status.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining free trial allowance.`;
+          return;
+        }
+
         const payload = files.map((f) => ({
-          user_id: data.user.id,
+          user_id: currentUser.id,
           uploadcare_cdn_url: f.cdn_url,
           filename: f.original_filename,
           size_bytes: f.size_bytes,
@@ -66,10 +111,15 @@
 
         const { error } = await supabase.from('document_uploads').insert(payload);
         if (error) {
-          status.textContent = `Upload saved by provider, but account link failed: ${error.message}`;
+          const limitMessage = error.message.toLowerCase().includes('free trial upload limit')
+            ? 'Your free trial upload limit has been reached. We will review the documents already received.'
+            : `Upload saved by provider, but account link failed: ${error.message}`;
+          status.textContent = limitMessage;
           return;
         }
 
+        uploadCount += files.length;
+        renderTrialState();
         status.innerHTML = `<strong>${files.length} file${files.length === 1 ? '' : 's'} linked to your account.</strong><br>We will use these for your compliance review.`;
         showToast('Files uploaded and linked to your account.');
       });
@@ -88,4 +138,13 @@
     }
   });
   dropzone?.setAttribute('tabindex', '0');
+
+  supabase.auth.getUser().then(async ({ data, error }) => {
+    if (error || !data.user) {
+      window.location.href = 'auth.html?mode=signin&next=upload.html';
+      return;
+    }
+    currentUser = data.user;
+    await refreshUploadCount();
+  });
 })();
