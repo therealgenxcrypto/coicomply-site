@@ -45,7 +45,7 @@
 
     emailStatus.textContent = 'Sending confirmation email...';
     const { error: emailError } = await supabase.functions.invoke('send-upload-confirmation', {
-      body: { email, count, files },
+      body: { count, files },
     });
 
     emailStatus.textContent = emailError

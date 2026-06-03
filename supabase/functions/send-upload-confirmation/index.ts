@@ -12,14 +12,30 @@ serve(async (req) => {
 
   const resendApiKey = Deno.env.get('RESEND_API_KEY');
   const fromEmail = Deno.env.get('CONFIRMATION_FROM_EMAIL') || 'COIComply <hello@coicomply.com>';
+  const supabaseUrl = Deno.env.get('SUPABASE_URL');
+  const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY');
+  const authorization = req.headers.get('Authorization');
 
-  if (!resendApiKey) {
-    return Response.json({ error: 'RESEND_API_KEY is not configured.' }, { status: 500, headers: corsHeaders });
+  if (!resendApiKey || !supabaseUrl || !supabaseAnonKey || !authorization) {
+    return Response.json({ error: 'Email confirmation service is not fully configured.' }, { status: 500, headers: corsHeaders });
   }
 
-  const { email, count, files } = await req.json();
+  const userResponse = await fetch(`${supabaseUrl}/auth/v1/user`, {
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: authorization,
+    },
+  });
+
+  if (!userResponse.ok) {
+    return Response.json({ error: 'Could not confirm authenticated user.' }, { status: 401, headers: corsHeaders });
+  }
+
+  const user = await userResponse.json();
+  const email = user.email;
+  const { count, files } = await req.json();
   if (!email || !count) {
-    return Response.json({ error: 'email and count are required.' }, { status: 400, headers: corsHeaders });
+    return Response.json({ error: 'count is required.' }, { status: 400, headers: corsHeaders });
   }
 
   const fileList = Array.isArray(files) && files.length
