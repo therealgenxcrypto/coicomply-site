@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload COIs | COIComply</title>
+  <meta name="description" content="Upload COIs tied to your COIComply account.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="protected.js"></script>
+  <script>
+    window.UPLOADCARE_PUBLIC_KEY = '8be87f4a194c54b843e3';
+    window.UPLOADCARE_LOCALE = 'en';
+    window.UPLOADCARE_TABS = 'file gdrive dropbox';
+    window.UPLOADCARE_MULTIPLE = true;
+    window.UPLOADCARE_MULTIPLE_MAX = 10;
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" defer></script>
+</head>
+<body data-protected="true">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">C</span><span><span class="brand-accent">COI</span>Comply</span></a>
+      <div class="nav-actions">
+        <a class="nav-cta" href="account.html">Account</a>
+        <button class="nav-cta nav-logout" id="logoutButton" type="button">Log out</button>
+      </div>
+    </nav>
+  </header>
+  <main class="section">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">Protected upload</p>
+        <h2>Upload COIs for your account</h2>
+        <p>These uploads are associated with your authenticated account and counted against your free trial usage.</p>
+      </div>
+      <section class="audit-form">
+        <h3>Secure upload</h3>
+        <div class="upload-dropzone" id="uploadDropzone">
+          <div class="upload-plus" aria-hidden="true">+</div>
+          <strong>Drag files here</strong>
+          <span>or click to choose files</span>
+        </div>
+        <div class="upload-status" id="uploadStatus" aria-live="polite">No files uploaded yet.</div>
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+  <script src="upload-page.js" defer></script>
+</body>
+</html>

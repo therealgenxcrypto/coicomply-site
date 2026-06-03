@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COI Compliance Cleanup for Property Managers | COIComply</title>
+  <meta name="description" content="Send us your vendor COIs. We’ll return a plain-English compliance report showing who is compliant, who is expired, who is missing coverage, and what needs to be fixed.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://coicomply.com/">
+  <meta property="og:title" content="COIComply — COI Compliance Cleanup for Property Managers">
+  <meta property="og:description" content="Know which vendors are cleared to work. Private, human-reviewed COI compliance reports for property managers.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b0f14">
+  <style>
+:root{
+  --bg:#080b10;--bg2:#0b0f14;--panel:#10151c;--panel2:#141b24;--surface:rgba(255,255,255,.045);--surface2:rgba(255,255,255,.075);--text:#f5f7fa;--muted:#a3adba;--dim:#697280;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.055);--blue:#6aa8ff;--cyan:#62d4e6;--green:#53c78d;--amber:#d8a94d;--orange:#df8d55;--red:#d75f67;--slate:#8da2c0;--max:1180px;--radius:18px;--shadow:0 30px 90px rgba(0,0,0,.45)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 70% -10%,rgba(58,112,190,.22),transparent 32rem),radial-gradient(circle at 0 20%,rgba(54,205,226,.08),transparent 24rem),linear-gradient(180deg,#090d12 0%,#080b10 38%,#0a0e13 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-feature-settings:"cv01","ss03";text-rendering:optimizeLegibility;line-height:1.5}a{color:inherit;text-decoration:none}p,h1,h2,h3{margin:0}button,input,select,textarea{font:inherit}.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.skip-link{position:absolute;left:-999px}.skip-link:focus{left:16px;top:16px;z-index:9;background:#fff;color:#000;padding:10px 12px;border-radius:8px}.site-header{position:sticky;top:0;z-index:8;background:rgba(8,11,16,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line2)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:center;gap:10px;font-weight:620;letter-spacing:-.02em}.brand-accent{color:var(--cyan)}.brand-mark{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,rgba(98,212,230,.22),rgba(106,168,255,.08));border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);color:#e9fbff}.nav-links{display:flex;gap:24px;color:var(--muted);font-size:14px;font-weight:520}.nav-links a:hover,.nav-cta:hover{color:var(--text)}.nav-cta{font-size:14px;font-weight:560;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);color:#dfe7f1}.section{padding:112px 0}.hero{position:relative;overflow:hidden;padding:92px 0 80px}.hero-glow{position:absolute;right:4%;top:7%;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(98,212,230,.17),transparent 62%);filter:blur(10px);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(470px,590px);gap:48px;align-items:center}.eyebrow{color:var(--cyan);font-size:13px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}.hero h1{font-size:clamp(48px,7.2vw,86px);line-height:.94;letter-spacing:-.07em;font-weight:640;max-width:760px}.hero-lede{margin-top:28px;max-width:660px;color:#c1cad6;font-size:19px;line-height:1.7;letter-spacing:-.018em}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--line);font-size:15px;font-weight:620;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.button.primary{background:linear-gradient(180deg,#f1fbff 0%,#c4e0ff 58%,#a8ccf6 100%);color:#07101b;border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.72),inset 0 -10px 22px rgba(48,103,166,.16),0 10px 28px rgba(106,168,255,.16),0 0 30px rgba(106,168,255,.16)}.button.primary:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.78),inset 0 -10px 22px rgba(48,103,166,.18),0 16px 34px rgba(106,168,255,.2),0 0 42px rgba(98,212,230,.18)}.button.secondary{background:rgba(255,255,255,.035);color:#dce5f0}.trust-line{margin-top:16px;color:var(--muted);font-size:14px}.report-shell{position:relative;transform:translateY(-18px);background:linear-gradient(180deg,rgba(20,27,36,.92),rgba(10,14,19,.94));border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.08);padding:20px;overflow:visible}.report-topbar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line2)}.report-kicker,.panel-label{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}.report-topbar h2{font-size:24px;letter-spacing:-.04em;margin-top:5px}.report-meta{margin-top:5px;color:var(--dim);font-size:11.5px;letter-spacing:-.01em}.report-actions{display:flex;flex-direction:column;align-items:flex-end;gap:7px}.report-date,.export-pill{color:var(--muted);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;white-space:nowrap}.export-pill{color:#cfefff;background:rgba(98,212,230,.07);border-color:rgba(98,212,230,.18)}.status-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 26px}.status-card{border:1px solid var(--line2);background:rgba(255,255,255,.035);border-radius:16px;padding:14px 12px}.status-card strong{display:block;font-size:24px;letter-spacing:-.04em}.status-card span{font-size:11px;color:var(--muted)}.status-card.approved{box-shadow:inset 0 0 0 1px rgba(83,199,141,.1)}.status-card.expiring{box-shadow:inset 0 0 0 1px rgba(216,169,77,.12)}.status-card.missing{box-shadow:inset 0 0 0 1px rgba(223,141,85,.12)}.status-card.blocked{box-shadow:inset 0 0 0 1px rgba(215,95,103,.12)}.report-table{border:1px solid var(--line2);border-radius:16px;overflow:hidden;background:rgba(0,0,0,.15)}.table-row{display:grid;grid-template-columns:1.1fr .95fr 1.25fr 1fr;gap:12px;padding:12px 14px;border-top:1px solid var(--line2);font-size:12.5px;color:#d8e0ea}.table-row:first-child{border-top:0}.table-head{background:rgba(255,255,255,.035);color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:700}.pill{display:inline-flex;white-space:nowrap;border-radius:999px;padding:4px 8px;font-style:normal;font-size:11px;font-weight:700;border:1px solid}.pill.ok{color:#bdf8d6;background:rgba(83,199,141,.11);border-color:rgba(83,199,141,.25)}.pill.warn{color:#ffe0a0;background:rgba(216,169,77,.12);border-color:rgba(216,169,77,.25)}.pill.miss{color:#ffc29d;background:rgba(223,141,85,.12);border-color:rgba(223,141,85,.25)}.pill.stop{color:#ffb5bb;background:rgba(215,95,103,.12);border-color:rgba(215,95,103,.27)}.action-panel{margin-top:14px;border:1px solid rgba(106,168,255,.15);border-radius:16px;background:linear-gradient(135deg,rgba(106,168,255,.09),rgba(98,212,230,.035));padding:15px}.action-panel p:last-child{margin-top:6px;color:#cbd5df;font-size:13px}.report-footer-note{display:flex;justify-content:space-between;gap:12px;margin-top:12px;color:var(--dim);font-size:11.5px}.report-footer-note span{display:inline-flex;align-items:center;gap:6px}.report-footer-note span:before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(98,212,230,.75)}
+.floating-proof{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;min-width:210px;padding:12px 14px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(12,17,24,.84);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.08)}.floating-proof strong{display:block;font-size:13px;letter-spacing:-.01em}.floating-proof small{display:block;margin-top:1px;color:var(--muted);font-size:11.5px}.proof-dot{width:9px;height:9px;border-radius:999px;box-shadow:0 0 18px currentColor}.proof-approved{right:-18px;top:-22px;color:var(--green)}.proof-blocked{left:-22px;bottom:72px;color:var(--red)}.proof-anchors{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.proof-anchors span{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.026);color:#cbd5df;font-size:13px}.proof-anchors span:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px rgba(98,212,230,.55)}.trust-strip{border-block:1px solid var(--line2);background:rgba(255,255,255,.018)}.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px}.trust-grid>div{padding:28px 24px;border-left:1px solid var(--line2)}.trust-grid>div:first-child{border-left:0}.trust-grid h2{font-size:15px;letter-spacing:-.02em;margin-bottom:7px}.trust-grid p{color:var(--muted);font-size:13.5px}.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:start}.section h2{font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.06em;font-weight:620}.prose p{color:#c3cbd6;font-size:19px;line-height:1.72;letter-spacing:-.02em}.prose p+p{margin-top:18px}.muted{margin-top:18px;color:var(--muted);font-size:18px}.section-heading{max-width:760px;margin-bottom:42px}.section-heading.narrow{text-align:center;margin-inline:auto}.section-heading p:not(.eyebrow){margin-top:18px;color:var(--muted);font-size:18px;line-height:1.65}.output-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.feature-card,.offer-card,.steps li,.faq-list details{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:var(--radius);padding:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}.feature-icon{display:inline-flex;color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:34px}.feature-card h3,.offer-card h3,.steps h3{font-size:20px;line-height:1.15;letter-spacing:-.035em;margin-bottom:10px}.feature-card p,.offer-card p,.steps p,.faq-list p{color:var(--muted);font-size:15px}.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:item}.steps li span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;margin-bottom:50px;background:rgba(106,168,255,.12);border:1px solid rgba(106,168,255,.2);color:#cce5ff;font-size:13px;font-weight:700}.checklist{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0;padding:0;list-style:none}.checklist li{border:1px solid var(--line2);border-radius:999px;padding:10px 13px;background:rgba(255,255,255,.025);color:#dbe3ed;font-size:14px}.checklist li:before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 16px rgba(98,212,230,.6)}.private-card{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:46px;border:1px solid rgba(106,168,255,.16);border-radius:28px;background:linear-gradient(135deg,rgba(106,168,255,.1),rgba(255,255,255,.03));box-shadow:var(--shadow)}.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.offer-card{display:flex;flex-direction:column;min-height:310px}.offer-card.featured{background:linear-gradient(180deg,rgba(106,168,255,.105),rgba(255,255,255,.04));border-color:rgba(106,168,255,.22)}.offer-label{color:var(--cyan)!important;text-transform:uppercase;letter-spacing:.1em;font-size:12px!important;font-weight:700;margin-bottom:18px}.offer-card h3{font-size:24px}.offer-card a{margin-top:auto;color:#e9f5ff;font-weight:650}.cta-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}.cta-grid>div>p:not(.eyebrow){margin-top:20px;color:#c3cbd6;font-size:19px;line-height:1.7}.mini-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px;color:#dce4ee}.mini-list li:before{content:"—";color:var(--cyan);margin-right:8px}.audit-form{border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.04);padding:26px;box-shadow:var(--shadow)}.audit-form h3{font-size:26px;letter-spacing:-.04em}.audit-form>p{color:var(--muted);margin:7px 0 20px}.audit-form label{display:block;color:#d8e0ea;font-size:13px;font-weight:620;margin-top:13px}.audit-form input,.audit-form select,.audit-form textarea{width:100%;margin-top:7px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;outline:none}.audit-form input:focus,.audit-form select:focus,.audit-form textarea:focus{border-color:rgba(98,212,230,.55);box-shadow:0 0 0 3px rgba(98,212,230,.08)}.full{width:100%;margin-top:18px}.form-note{font-size:12.5px!important;line-height:1.45}.faq-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}.faq-list details{padding:0}.faq-list summary{cursor:pointer;list-style:none;padding:20px;font-weight:650;letter-spacing:-.02em}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";float:right;color:var(--cyan)}.faq-list details[open] summary:after{content:"–"}.faq-list p{padding:0 20px 20px}.site-footer{padding:46px 0 56px;border-top:1px solid var(--line2);background:#070a0e}.footer-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px;color:var(--muted)}.footer-grid .brand{color:var(--text);margin-bottom:12px}.disclaimer{font-size:12.5px;line-height:1.65;color:#858f9b}
+@media (max-width:980px){.report-shell{transform:none}.proof-approved{right:12px;top:-16px}.proof-blocked{left:12px;bottom:-16px}.proof-anchors{margin-top:30px}.nav-links{display:none}.hero-grid,.split,.private-card,.cta-grid,.footer-grid{grid-template-columns:1fr;gap:40px}.hero-grid{gap:42px}.report-shell{max-width:680px}.trust-grid,.output-grid,.steps,.offers{grid-template-columns:1fr 1fr}.checklist{grid-template-columns:1fr 1fr}.section{padding:82px 0}.hero{padding-top:70px}.table-row{grid-template-columns:1fr .9fr;}.table-row span:nth-child(3),.table-row span:nth-child(4){display:none}}@media (max-width:640px){.nav-actions{gap:8px}.nav-upload{font-size:13px;padding:8px 11px}.modal-card{padding:22px;border-radius:22px}.modal-card h2{font-size:32px}.upload-dropzone{min-height:160px}.toast{left:14px;right:14px;bottom:14px;max-width:none}.floating-proof{position:static;margin-bottom:10px;min-width:0}.proof-blocked{display:none}.proof-anchors{gap:8px}.proof-anchors span{font-size:12px;padding:8px 10px}.container{width:min(100% - 28px,var(--max))}.nav{height:64px}.nav-cta{display:none}.brand-mark{width:28px;height:28px}.hero h1{font-size:48px}.hero-lede,.prose p,.cta-grid>div>p:not(.eyebrow){font-size:17px}.hero-actions{display:grid}.button{width:100%}.report-shell{border-radius:20px;padding:14px}.status-cards{grid-template-columns:1fr 1fr}.trust-grid,.output-grid,.steps,.offers,.faq-list,.checklist{grid-template-columns:1fr}.trust-grid>div{border-left:0;border-top:1px solid var(--line2);padding-inline:0}.trust-grid>div:first-child{border-top:0}.section h2{font-size:38px}.private-card{padding:26px}.audit-form{padding:20px}.section{padding:68px 0}.hero{padding:54px 0}.steps li span{margin-bottom:28px}.table-row{font-size:12px;padding:11px 10px;gap:8px}.report-topbar{display:block}.report-actions{align-items:flex-start;margin-top:12px}.report-date{display:inline-flex}.report-footer-note{display:grid}.footer-grid{gap:24px}}
+
+.nav-actions{display:flex;align-items:center;gap:10px}.nav-upload{font:inherit;font-size:14px;font-weight:650;color:#061017;background:linear-gradient(180deg,#e9fbff,#acefff);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:9px 13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 0 28px rgba(98,212,230,.18);cursor:pointer}.nav-upload[hidden]{display:none}.nav-upload.is-live{animation:softPulse 1.8s ease-out 1}@keyframes softPulse{0%{box-shadow:0 0 0 0 rgba(98,212,230,.38)}100%{box-shadow:0 0 0 16px rgba(98,212,230,0)}}.required{color:var(--cyan)}.optional{float:right;color:var(--dim);font-size:12px;font-weight:500}.form-live{min-height:0;color:var(--cyan);font-size:13px;margin-bottom:10px}.form-success{margin-top:18px;padding:16px;border:1px solid rgba(98,212,230,.18);border-radius:16px;background:rgba(98,212,230,.06)}.form-success p{color:#cbd5df!important;margin:0 0 8px!important}.form-success p+p{margin-bottom:14px!important}.modal-open{overflow:hidden}.upload-modal[hidden],.toast[hidden]{display:none}.upload-modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:22px}.modal-backdrop{position:absolute;inset:0;background:rgba(3,6,10,.84);backdrop-filter:blur(18px)}.modal-card{position:relative;width:min(560px,100%);border:1px solid rgba(255,255,255,.12);border-radius:28px;background:linear-gradient(180deg,rgba(18,25,34,.98),rgba(8,12,18,.98));box-shadow:0 35px 110px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);padding:30px}.modal-card h2{font-size:38px;line-height:1;letter-spacing:-.06em;margin-bottom:14px}.modal-card p:not(.eyebrow){color:#b8c3cf;line-height:1.6}.modal-close{position:absolute;right:18px;top:18px;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#dfe7f1;font-size:22px;line-height:1;cursor:pointer}.upload-dropzone{margin:24px 0 14px;display:grid;place-items:center;text-align:center;min-height:190px;border:1px dashed rgba(98,212,230,.34);border-radius:22px;background:radial-gradient(circle at 50% 0,rgba(98,212,230,.13),transparent 58%),rgba(255,255,255,.025);cursor:pointer;transition:.18s ease;outline:none}.upload-dropzone:hover,.upload-dropzone:focus{border-color:rgba(98,212,230,.64);background:radial-gradient(circle at 50% 0,rgba(98,212,230,.18),transparent 58%),rgba(255,255,255,.04)}.upload-plus{display:grid;place-items:center;width:48px;height:48px;margin-bottom:12px;border-radius:16px;background:linear-gradient(180deg,#e9fbff,#acefff);color:#061017;font-size:30px;font-weight:400;box-shadow:0 0 35px rgba(98,212,230,.23)}.upload-dropzone strong{font-size:20px;letter-spacing:-.03em}.upload-dropzone span{margin-top:4px;color:var(--muted);font-size:14px}.upload-status{min-height:42px;border:1px solid var(--line2);border-radius:14px;background:rgba(255,255,255,.025);padding:12px;color:#cbd5df;font-size:14px}.toast{position:fixed;right:22px;bottom:22px;z-index:40;max-width:360px;padding:14px 16px;border:1px solid rgba(98,212,230,.22);border-radius:16px;background:rgba(12,17,24,.94);color:#e9f5ff;box-shadow:0 18px 60px rgba(0,0,0,.45)}
+
+</style>
+  <script>
+    window.UPLOADCARE_PUBLIC_KEY = '8be87f4a194c54b843e3';
+    window.UPLOADCARE_LOCALE = 'en';
+    window.UPLOADCARE_TABS = 'file gdrive dropbox';
+    window.UPLOADCARE_MULTIPLE = true;
+    window.UPLOADCARE_MULTIPLE_MAX = 10;
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Site header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="COIComply home">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span><span class="brand-accent">COI</span>Comply</span>
+      </a>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#sample-report">Sample Report</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#what-we-check">What We Check</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-upload" id="navUploadButton" type="button" hidden>Upload COIs</button>
+        <a class="nav-cta" href="#free-audit">Get a free COI audit</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero section">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Private COI review for property managers</p>
+          <h1>Know which vendors are cleared to work.</h1>
+          <p class="hero-lede">Send us your vendor COIs. We review them against your insurance requirements and return a clear report showing who is compliant, who is expired, who is missing coverage, and what needs to be fixed.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#free-audit">Get a free COI audit</a>
+            <a class="button secondary" href="#sample-report">View sample report</a>
+          </div>
+          <p class="trust-line">Private workflow. Human-reviewed report. No login or software rollout.</p>
+        </div>
+
+        <aside class="report-shell" aria-label="Compliance report preview">
+          <div class="floating-proof proof-approved" aria-hidden="true">
+            <span class="proof-dot"></span>
+            <div><strong>Approved</strong><small>Atlas HVAC cleared to work</small></div>
+          </div>
+          <div class="floating-proof proof-blocked" aria-hidden="true">
+            <span class="proof-dot"></span>
+            <div><strong>Do not schedule</strong><small>Workers Comp expired</small></div>
+          </div>
+          <div class="report-topbar">
+            <div>
+              <p class="report-kicker">Sample delivered report</p>
+              <h2>Vendor file summary</h2>
+              <p class="report-meta">Prepared for Riverview Property Group · Report ID COI-0526-014</p>
+            </div>
+            <div class="report-actions" aria-label="Report metadata">
+              <span class="report-date">Generated May 2026</span>
+              <span class="export-pill">Delivered as PDF + XLSX</span>
+            </div>
+          </div>
+          <div class="status-cards" aria-label="Portfolio summary statuses">
+            <div class="status-card approved"><strong>18</strong><span>Approved</span></div>
+            <div class="status-card expiring"><strong>7</strong><span>Renewal soon</span></div>
+            <div class="status-card missing"><strong>5</strong><span>Missing docs</span></div>
+            <div class="status-card blocked"><strong>3</strong><span>Do not schedule</span></div>
+          </div>
+          <div class="report-table" role="table" aria-label="Sample vendor compliance table">
+            <div class="table-row table-head" role="row">
+              <span role="columnheader">Vendor</span><span role="columnheader">Status</span><span role="columnheader">Issue</span><span role="columnheader">Action</span>
+            </div>
+            <div class="table-row" role="row">
+              <span role="cell">Atlas HVAC</span><span role="cell"><mark class="pill ok">Approved</mark></span><span role="cell">All required limits met</span><span role="cell">Cleared</span>
+            </div>
+            <div class="table-row" role="row">
+              <span role="cell">Northline Plumbing</span><span role="cell"><mark class="pill warn">Renewal soon</mark></span><span role="cell">GL expires in 21 days</span><span role="cell">Request renewal</span>
+            </div>
+            <div class="table-row" role="row">
+              <span role="cell">Vector Security</span><span role="cell"><mark class="pill miss">Not confirmed</mark></span><span role="cell">Additional Insured endorsement missing</span><span role="cell">Request endorsement</span>
+            </div>
+            <div class="table-row" role="row">
+              <span role="cell">Summit Roofing</span><span role="cell"><mark class="pill stop">Do not schedule</mark></span><span role="cell">Workers Comp expired</span><span role="cell">Hold work order</span>
+            </div>
+          </div>
+          <div class="action-panel">
+            <p class="panel-label">Action required</p>
+            <p><strong>Additional Insured endorsement not confirmed.</strong> COI indicates status, but endorsement was not provided. Request actual endorsement naming required entity.</p>
+          </div>
+          <div class="report-footer-note">
+            <span>Human-reviewed before delivery</span>
+            <span>Audit-ready summary</span>
+          </div>
+        </aside>
+      </div>
+      <div class="container proof-anchors" aria-label="Operational proof points">
+        <span>Vendor-by-vendor compliance review</span>
+        <span>Expiration tracking</span>
+        <span>Missing endorsement visibility</span>
+        <span>Plain-English action summaries</span>
+        <span>Human-reviewed before delivery</span>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Trust points">
+      <div class="container trust-grid">
+        <div><h2>Built for property managers</h2><p>Vendor COIs, renewals, missing coverage, and audit-ready reporting.</p></div>
+        <div><h2>Private by design</h2><p>Documents handled through a controlled review workflow.</p></div>
+        <div><h2>Human-reviewed</h2><p>Structured extraction assists the work. A human reviews before delivery.</p></div>
+        <div><h2>Plain English output</h2><p>Status, issue, and action required. No insurance jargon maze.</p></div>
+      </div>
+    </section>
+
+    <section class="section problem">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2>COIs look simple. Managing them is not.</h2>
+        </div>
+        <div class="prose">
+          <p>Vendor certificates arrive in different formats. Requirements live in leases, contracts, owner standards, and spreadsheets. Expiration dates get missed. Endorsements are assumed but not confirmed. Vendors get scheduled before anyone knows what is missing.</p>
+          <p>We turn the pile into a clear report your team can act on.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-report" class="section sample">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">The output</p>
+          <h2>Built for action, not interpretation.</h2>
+          <p>See the whole vendor file at a glance. Then drill into the exceptions. The report shows coverage types, limits, expiration dates, missing documents, unconfirmed endorsements, and renewal actions in plain English.</p>
+        </div>
+        <div class="output-grid">
+          <article class="feature-card"><span class="feature-icon">01</span><h3>At-a-glance status</h3><p>See compliant, expiring, missing, and non-compliant vendors immediately.</p></article>
+          <article class="feature-card"><span class="feature-icon">02</span><h3>Required vs. actual limits</h3><p>Know exactly where coverage falls short against your stated requirements.</p></article>
+          <article class="feature-card"><span class="feature-icon">03</span><h3>Plain-English actions</h3><p>Every issue includes the next step your team should take.</p></article>
+          <article class="feature-card"><span class="feature-icon">04</span><h3>Renewal tracking</h3><p>Identify policies that need follow-up before they expire.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section steps-section">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">How it works</p>
+          <h2>Send. Review. Act.</h2>
+          <p>No implementation. No training. No dashboard required to get started.</p>
+        </div>
+        <ol class="steps">
+          <li><span>1</span><h3>Send your COIs</h3><p>Start with up to 10 vendor COIs and your requirements.</p></li>
+          <li><span>2</span><h3>We review the documents</h3><p>Coverage, limits, dates, names, and endorsements are extracted and checked.</p></li>
+          <li><span>3</span><h3>We compare against your standards</h3><p>Each COI is reviewed against the requirements you provide.</p></li>
+          <li><span>4</span><h3>You get the report</h3><p>Clear status. Clear issue. Clear next step.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="what-we-check" class="section checks-section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">What we check</p>
+          <h2>The details that usually get missed.</h2>
+          <p class="muted">If it is not confirmed, we say so.</p>
+        </div>
+        <ul class="checklist">
+          <li>General Liability</li><li>Workers Compensation</li><li>Auto Liability</li><li>Umbrella / Excess</li><li>Expiration dates</li><li>Named insureds</li><li>Certificate holders</li><li>Additional Insured status</li><li>Waiver of Subrogation</li><li>Primary and Non-Contributory wording</li><li>Missing endorsements</li><li>Limit shortfalls</li><li>Expired policies</li><li>Mismatched entities</li><li>Incomplete certificates</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section private-section">
+      <div class="container private-card">
+        <div>
+          <p class="eyebrow">Private + reviewed</p>
+          <h2>Too important for a public chatbot.</h2>
+        </div>
+        <div class="prose">
+          <p>COI compliance should not depend on unmanaged chatbot prompts. We use a controlled document workflow, compare each certificate against your requirements, and human-review the report before delivery.</p>
+          <p><strong>AI helps organize the work. Human review protects the output.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section offers-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Service options</p>
+          <h2>Start with the backlog. Stay current every month.</h2>
+        </div>
+        <div class="offers">
+          <article class="offer-card"><p class="offer-label">Free Sample Audit</p><h3>Up to 10 COIs reviewed at no cost.</h3><p>Best for teams that want to see the output before committing.</p><a href="#free-audit">Get a free audit</a></article>
+          <article class="offer-card featured"><p class="offer-label">Backlog Cleanup</p><h3>A full review of your current vendor file.</h3><p>Compliance summary, vendor detail report, non-compliant list, expiration list, missing-document list, and recommended next actions.</p><a href="#free-audit">Clean up my COI backlog</a></article>
+          <article class="offer-card"><p class="offer-label">Monthly Monitoring</p><h3>Expiration tracking and vendor follow-up support.</h3><p>Monthly reports, renewal chase lists, non-compliance updates, and follow-up support.</p><a href="#free-audit">Ask about monitoring</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="free-audit" class="section cta-section">
+      <div class="container cta-grid">
+        <div>
+          <p class="eyebrow">Free audit</p>
+          <h2>Try it on your actual COIs.</h2>
+          <p>Send up to 10 vendor COIs and your insurance requirements. We’ll return a sample compliance report so you can see exactly what we catch.</p>
+          <ul class="mini-list"><li>No demo required.</li><li>No software rollout.</li><li>No long-term contract.</li></ul>
+        </div>
+        <form class="audit-form" id="auditForm" action="https://formspree.io/f/FORM_ID" method="post">
+          <div class="form-live" id="formLive" aria-live="polite"></div>
+          <h3>Request your free COI audit</h3>
+          <p>Tell us where to send the secure upload instructions.</p>
+          <label>Name <span class="required">*</span><input name="name" autocomplete="name" required></label>
+          <label>Work email <span class="required">*</span><input type="email" name="email" autocomplete="email" required></label>
+          <label>Company <span class="required">*</span><input name="company" autocomplete="organization" required></label>
+          <label>Role <span class="optional">optional</span><input name="role" autocomplete="organization-title" placeholder="Property manager, operations director…"></label>
+          <label>Number of properties <span class="optional">optional</span><input name="properties" inputmode="numeric" placeholder="e.g. 12"></label>
+          <label>Approximate number of vendors <span class="optional">optional</span><input name="vendors" inputmode="numeric" placeholder="e.g. 75"></label>
+          <label>Do you have written insurance requirements?
+            <select name="requirements" required>
+              <option value="" selected>Select one</option><option>Yes</option><option>No</option><option>Not sure</option>
+            </select>
+          </label>
+          <label>Message / notes <span class="optional">optional</span><textarea name="message" rows="4" placeholder="Anything we should know about your vendor file?"></textarea></label>
+          <input type="hidden" name="uploadcare_file_urls" id="uploadedFileUrls">
+          <button class="button primary full" type="submit">Continue to upload</button>
+          <p class="form-note">After submitting, you’ll be able to upload up to 10 COIs and your requirements. Your documents are used only to prepare your COI compliance review.</p>
+          <div class="form-success" id="formSuccess" hidden>
+            <p><strong>Audit request received.</strong></p>
+            <p>Now upload up to 10 vendor COIs and your insurance requirements.</p>
+            <button class="button primary full" type="button" id="formUploadButton">Upload COIs</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section">
+      <div class="container">
+        <div class="section-heading narrow">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions property teams usually ask.</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>Is this software?</summary><p>Not at first. We use software internally, but you do not need to implement a platform to get value. Send us the documents. We send back the report.</p></details>
+          <details><summary>Do we need to upload every vendor COI?</summary><p>No. Start with up to 10 COIs for the free audit. If the report is useful, we can review the full vendor file.</p></details>
+          <details><summary>What requirements do you check against?</summary><p>We check against the insurance requirements you provide. These may come from leases, vendor contracts, owner standards, property rules, or internal compliance guidelines.</p></details>
+          <details><summary>What if we do not have written requirements?</summary><p>We can still flag obvious issues like expired policies, missing coverage types, incomplete certificates, and upcoming renewals. For final compliance standards, your team should confirm requirements with ownership, legal counsel, broker, or risk manager.</p></details>
+          <details><summary>Do you review endorsements?</summary><p>Yes, if endorsements are provided. If a COI references Additional Insured status, Waiver of Subrogation, or Primary and Non-Contributory wording but the actual endorsement is missing, the report will mark it as not confirmed.</p></details>
+          <details><summary>How fast is the free audit?</summary><p>Most sample audits are returned within 48 hours after all documents and requirements are received.</p></details>
+          <details><summary>Is this a legal opinion or insurance coverage determination?</summary><p>No. The report identifies apparent compliance gaps based on the documents provided and the requirements supplied. It is not a legal opinion, coverage determination, or substitute for review by counsel, broker, carrier, or risk manager.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="upload-modal" id="uploadModal" hidden aria-hidden="true">
+    <div class="modal-backdrop" data-close-upload></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="uploadTitle" aria-describedby="uploadDescription">
+      <button class="modal-close" type="button" data-close-upload aria-label="Close upload dialog">×</button>
+      <p class="eyebrow">Secure upload</p>
+      <h2 id="uploadTitle">Upload your COIs</h2>
+      <p id="uploadDescription">Add up to 10 vendor COIs and your insurance requirements. PDF, Excel, Word, and image files are accepted. Max 25MB per file for the POC.</p>
+      <div class="upload-dropzone" id="uploadDropzone">
+        <div class="upload-plus" aria-hidden="true">+</div>
+        <strong>Drag files here</strong>
+        <span>or click to choose files</span>
+      </div>
+      <input type="hidden" role="uploadcare-uploader" id="uploadcareWidget" data-multiple="true" data-multiple-max="10" data-clearable="true" data-images-only="false">
+      <div class="upload-status" id="uploadStatus" aria-live="polite">No files uploaded yet.</div>
+      <p class="form-note">Your documents are used only to prepare your COI compliance review. Reports are not legal opinions or coverage determinations.</p>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">C</span><span><span class="brand-accent">COI</span>Comply</span></a><p>Clear COI compliance reporting for property managers.</p></div>
+      <p class="disclaimer">Reports are based solely on documents provided and the insurance requirements supplied by the customer. Reviews identify apparent compliance gaps and are not legal opinions, insurance coverage determinations, or guarantees of coverage. Customers should consult their broker, carrier, counsel, or risk manager for final coverage and legal determinations.</p>
+    </div>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

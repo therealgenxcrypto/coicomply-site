@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account | COIComply</title>
+  <meta name="description" content="Manage your COIComply account.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="protected.js"></script>
+</head>
+<body data-protected="true">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">C</span><span><span class="brand-accent">COI</span>Comply</span></a>
+      <div class="nav-actions">
+        <a class="nav-cta" href="upload.html">Upload documents</a>
+        <button class="nav-cta nav-logout" id="logoutButton" type="button">Log out</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Account</p>
+        <h2>Your COIComply account</h2>
+        <p id="accountEmail">Loading account...</p>
+      </div>
+      <div class="output-grid">
+        <article class="feature-card"><span class="feature-icon">01</span><h3>Free trial uploads used</h3><p id="trialUsed">0</p></article>
+        <article class="feature-card"><span class="feature-icon">02</span><h3>Free trial uploads remaining</h3><p id="trialRemaining">10</p></article>
+        <article class="feature-card"><span class="feature-icon">03</span><h3>Files uploaded</h3><p id="filesUploaded">0</p></article>
+        <article class="feature-card"><span class="feature-icon">04</span><h3>Next step</h3><p><a href="upload.html">Upload COIs</a> to continue the sample audit.</p></article>
+      </div>
+    </div>
+  </main>
+  <script src="account.js" defer></script>
+</body>
+</html>

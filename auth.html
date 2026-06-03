@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In | COIComply</title>
+  <meta name="description" content="Create an account or sign in to COIComply.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+</head>
+<body>
+  <header class="site-header" aria-label="Site header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="COIComply home">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span><span class="brand-accent">COI</span>Comply</span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-cta" href="index.html">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">Account access</p>
+        <h2 id="authTitle">Sign in</h2>
+        <p>Authentication is used only to identify your team, track free trial usage, and associate uploaded documents with your account.</p>
+      </div>
+      <form class="audit-form" id="authForm">
+        <div class="form-live" id="authLive" aria-live="polite"></div>
+        <h3 id="authFormHeading">Sign in to COIComply</h3>
+        <label>Work email <span class="required">*</span><input type="email" name="email" autocomplete="email" required></label>
+        <label>Password <span class="required">*</span><input type="password" name="password" autocomplete="current-password" minlength="8" required></label>
+        <button class="button primary full" type="submit" id="authSubmit">Sign in</button>
+        <p class="form-note" id="authSwitchText">Need an account? <a href="?mode=signup" id="authSwitchLink">Create one</a>.</p>
+      </form>
+    </div>
+  </main>
+
+  <script src="auth-page.js" defer></script>
+</body>
+</html>

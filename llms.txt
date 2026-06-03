@@ -1,0 +1,19 @@
+# COIComply
+
+COIComply provides private, human-reviewed certificate of insurance compliance reviews for property managers.
+
+## Primary Pages
+
+- Home: https://coicomply.com/
+
+## What COIComply Does
+
+COIComply reviews vendor certificates of insurance against customer-provided insurance requirements and returns a plain-English report showing compliant vendors, expired policies, missing coverage, missing endorsements, renewal issues, and recommended next actions.
+
+## Audience
+
+Property managers, real estate operators, asset managers, operations teams, and risk/compliance teams responsible for vendor certificate of insurance collection and review.
+
+## Notes For Crawlers
+
+The public marketing page is crawlable. Account, authentication, and upload pages are intentionally excluded from indexing because they are customer-specific workflows.
