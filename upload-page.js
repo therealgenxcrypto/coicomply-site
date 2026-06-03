@@ -120,8 +120,14 @@
 
         uploadCount += files.length;
         renderTrialState();
-        status.innerHTML = `<strong>${files.length} file${files.length === 1 ? '' : 's'} linked to your account.</strong><br>We will use these for your compliance review.`;
+        window.localStorage.setItem('coi_last_upload_confirmation', JSON.stringify({
+          count: files.length,
+          files: payload,
+          created_at: new Date().toISOString(),
+        }));
+        status.innerHTML = `<strong>${files.length} file${files.length === 1 ? '' : 's'} linked to your account.</strong><br>Opening your confirmation receipt...`;
         showToast('Files uploaded and linked to your account.');
+        window.location.href = `confirmation.html?files=${files.length}`;
       });
     });
 

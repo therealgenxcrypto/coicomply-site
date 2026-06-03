@@ -3,6 +3,7 @@ Allow: /
 Disallow: /auth.html
 Disallow: /account.html
 Disallow: /upload.html
+Disallow: /confirmation.html
 Disallow: /coicomply-mobile-preview.html
 
 Sitemap: https://coicomply.com/sitemap.xml

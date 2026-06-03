@@ -105,11 +105,17 @@
             return;
           }
           uploadCount += urls.length;
+          window.localStorage.setItem('coi_last_upload_confirmation', JSON.stringify({
+            count: urls.length,
+            files: payload,
+            created_at: new Date().toISOString(),
+          }));
         }
         uploadedFileUrls.value = urls.join('\n');
-        uploadStatus.innerHTML = `<strong>${urls.length} file${urls.length === 1 ? '' : 's'} received.</strong><br>We’ll review your documents and email your sample report back.`;
+        uploadStatus.innerHTML = `<strong>${urls.length} file${urls.length === 1 ? '' : 's'} received.</strong><br>Opening your confirmation receipt...`;
         showToast('Files received. Confirmation email setup will be connected before launch.');
         closeUploadModal();
+        window.location.href = `confirmation.html?files=${urls.length}`;
       });
     });
 

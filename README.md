@@ -19,3 +19,14 @@ The public homepage is crawlable. Authentication, account, upload, and preview p
 
 - Supabase handles authentication and upload/account tracking.
 - Uploadcare handles document file uploads.
+
+## Confirmation Email
+
+The upload confirmation page is live. Email delivery is scaffolded through `supabase/functions/send-upload-confirmation`.
+
+To enable confirmation emails:
+
+- Add `RESEND_API_KEY` as a Supabase Edge Function secret.
+- Optionally add `CONFIRMATION_FROM_EMAIL`.
+- Deploy the `send-upload-confirmation` function.
+- Set `window.COI_CONFIRMATION_EMAIL_ENABLED = true` in `supabase-config.js`.

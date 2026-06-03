@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload Confirmed | COIComply</title>
+  <meta name="description" content="COIComply upload confirmation.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="protected.js"></script>
+</head>
+<body data-protected="true">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">C</span><span><span class="brand-accent">COI</span>Comply</span></a>
+      <div class="nav-actions">
+        <a class="nav-cta" href="account.html">Account</a>
+        <a class="nav-cta" href="upload.html">Upload more</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container cta-grid">
+      <div>
+        <p class="eyebrow">Upload confirmed</p>
+        <h2>We received your documents.</h2>
+        <p id="confirmationSummary">Preparing your confirmation...</p>
+        <ul class="mini-list">
+          <li>Your documents are linked to your COIComply account.</li>
+          <li>We will review the files for your sample COI audit.</li>
+          <li>Most sample audits are returned within 48 hours after all required documents are received.</li>
+        </ul>
+      </div>
+      <section class="audit-form confirmation-card">
+        <p class="eyebrow">Receipt</p>
+        <h3>Upload receipt</h3>
+        <div class="upload-status" id="emailStatus" aria-live="polite">Checking confirmation email status...</div>
+        <div class="confirmation-list" id="confirmationFiles"></div>
+        <a class="button primary full" href="account.html">Back to account</a>
+        <a class="button secondary full" href="upload.html">Upload more documents</a>
+      </section>
+    </div>
+  </main>
+
+  <script src="confirmation.js" defer></script>
+</body>
+</html>
