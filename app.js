@@ -1,17 +1,12 @@
 (() => {
   const supabase = window.coiSupabase;
-  const auditForm = document.getElementById('auditForm');
-  const formSuccess = document.getElementById('formSuccess');
-  const formLive = document.getElementById('formLive');
   const navUploadButton = document.getElementById('navUploadButton');
-  const formUploadButton = document.getElementById('formUploadButton');
   const modal = document.getElementById('uploadModal');
   const dropzone = document.getElementById('uploadDropzone');
   const uploadStatus = document.getElementById('uploadStatus');
-  const uploadedFileUrls = document.getElementById('uploadedFileUrls');
   const toast = document.getElementById('toast');
 
-  let auditRequested = false;
+  let auditRequested = true;
   let lastFocus = null;
   let activeUserId = null;
   let uploadCount = 0;
@@ -26,13 +21,6 @@
     showToast.timer = window.setTimeout(() => { toast.hidden = true; }, 5200);
   };
 
-  const enableUpload = () => {
-    auditRequested = true;
-    navUploadButton.hidden = false;
-    navUploadButton.classList.add('is-live');
-    formSuccess.hidden = false;
-  };
-
   const openUploadModal = () => {
     if (!activeUserId) {
       window.location.href = 'auth.html?mode=signin&next=index.html';
@@ -44,8 +32,8 @@
       return;
     }
     if (!auditRequested) {
-      document.getElementById('free-audit').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      showToast('Start with the audit request. Then upload your COIs.');
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast('Start with the free audit account. Then upload your COIs.');
       return;
     }
     lastFocus = document.activeElement;
@@ -111,7 +99,6 @@
             created_at: new Date().toISOString(),
           }));
         }
-        uploadedFileUrls.value = urls.join('\n');
         uploadStatus.innerHTML = `<strong>${urls.length} file${urls.length === 1 ? '' : 's'} received.</strong><br>Opening your confirmation receipt...`;
         showToast('Files received. Confirmation email setup will be connected before launch.');
         closeUploadModal();
@@ -124,43 +111,7 @@
     });
   };
 
-  auditForm?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    if (!auditForm.checkValidity()) {
-      auditForm.reportValidity();
-      return;
-    }
-
-    const formData = new FormData(auditForm);
-    if (activeUserId) formData.set('supabase_user_id', activeUserId);
-    const isConfigured = auditForm.action && !auditForm.action.includes('FORM_ID');
-
-    formLive.textContent = 'Submitting audit request…';
-
-    if (isConfigured) {
-      try {
-        const response = await fetch(auditForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { Accept: 'application/json' },
-        });
-        if (!response.ok) throw new Error('Form submission failed');
-      } catch (error) {
-        formLive.textContent = 'Something went wrong. Please try again or email hello@coicomply.com.';
-        showToast('Submission failed. Check the form endpoint before launch.');
-        return;
-      }
-    }
-
-    formLive.textContent = 'Audit request received. Upload is now available.';
-    enableUpload();
-    showToast('Audit request received. You can upload your COIs now.');
-    openUploadModal();
-  });
-
   navUploadButton?.addEventListener('click', openUploadModal);
-  formUploadButton?.addEventListener('click', openUploadModal);
   dropzone?.addEventListener('click', openUploadcareDialog);
   dropzone?.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {

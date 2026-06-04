@@ -45,7 +45,7 @@
         <a class="nav-cta nav-account-link" href="account.html" hidden>Account</a>
         <button class="nav-cta nav-logout" id="navLogoutButton" type="button" hidden>Log out</button>
         <button class="nav-upload" id="navUploadButton" type="button" hidden>Upload COIs</button>
-        <a class="nav-cta" href="#free-audit">Get a free COI audit</a>
+        <a class="nav-cta" href="#pricing">View pricing</a>
       </div>
     </nav>
   </header>
@@ -59,7 +59,7 @@
           <h1>Know which vendors are cleared to work.</h1>
           <p class="hero-lede">Send us your vendor COIs. We review them against your insurance requirements and return a clear report showing who is compliant, who is expired, who is missing coverage, and what needs to be fixed.</p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#free-audit">Get a free COI audit</a>
+            <a class="button primary" href="auth.html?mode=signup&next=upload.html">Start free audit</a>
             <a class="button secondary" href="#sample-report">View sample report</a>
           </div>
           <p class="trust-line">Private workflow. Human-reviewed report. No login or software rollout.</p>
@@ -207,53 +207,47 @@
       </div>
     </section>
 
-    <section class="section offers-section">
+    <section id="pricing" class="section offers-section pricing-section">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">Service options</p>
-          <h2>Start with the backlog. Stay current every month.</h2>
+          <p class="eyebrow">Pricing</p>
+          <h2>Ongoing COI monitoring, with cleanup included.</h2>
+          <p>Start with a free sample audit. Paid plans include the initial vendor-file cleanup plus recurring compliance monitoring, so your team does not fall back into spreadsheet scramble.</p>
         </div>
-        <div class="offers">
-          <article class="offer-card"><p class="offer-label">Free Sample Audit</p><h3>Up to 10 COIs reviewed at no cost.</h3><p>Best for teams that want to see the output before committing.</p><a href="#free-audit">Get a free audit</a></article>
-          <article class="offer-card featured"><p class="offer-label">Backlog Cleanup</p><h3>A full review of your current vendor file.</h3><p>Compliance summary, vendor detail report, non-compliant list, expiration list, missing-document list, and recommended next actions.</p><a href="#free-audit">Clean up my COI backlog</a></article>
-          <article class="offer-card"><p class="offer-label">Monthly Monitoring</p><h3>Expiration tracking and vendor follow-up support.</h3><p>Monthly reports, renewal chase lists, non-compliance updates, and follow-up support.</p><a href="#free-audit">Ask about monitoring</a></article>
+        <div class="offers pricing-grid">
+          <article class="offer-card price-card">
+            <p class="offer-label">Free Sample Audit</p>
+            <h3>$0</h3>
+            <p>Up to 10 vendor files reviewed so your team can see the output before committing.</p>
+            <ul class="price-list"><li>One-time sample report</li><li>Plain-English findings</li><li>Upload through a secure account</li></ul>
+            <a href="auth.html?mode=signup&next=upload.html">Start free audit</a>
+          </article>
+          <article class="offer-card price-card">
+            <p class="offer-label">Starter Monitoring</p>
+            <h3>$399/mo</h3>
+            <p>For smaller property teams that need their vendor file cleaned up and monitored.</p>
+            <ul class="price-list"><li>Up to 50 active vendors</li><li>Initial cleanup included</li><li>Monthly compliance report</li><li>Renewal and exception tracking</li></ul>
+            <a href="auth.html?mode=signup&next=upload.html">Start with free audit</a>
+          </article>
+          <article class="offer-card price-card featured">
+            <p class="offer-label">Portfolio Monitoring</p>
+            <h3>$799/mo</h3>
+            <p>For multi-property teams that need a cleaner operating rhythm around COIs.</p>
+            <ul class="price-list"><li>Up to 150 active vendors</li><li>Initial cleanup included</li><li>Weekly updates during first 30 days</li><li>Monthly monitoring report</li><li>Priority action list</li></ul>
+            <a href="auth.html?mode=signup&next=upload.html">Start with free audit</a>
+          </article>
+          <article class="offer-card price-card">
+            <p class="offer-label">Managed Monitoring</p>
+            <h3>$1,499/mo</h3>
+            <p>For teams that want COI follow-up work moved off their internal staff.</p>
+            <ul class="price-list"><li>Up to 300 active vendors</li><li>Vendor follow-up support included</li><li>Exception and renewal tracking</li><li>Monthly compliance summary</li></ul>
+            <a href="auth.html?mode=signup&next=upload.html">Start with free audit</a>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <section id="free-audit" class="section cta-section">
-      <div class="container cta-grid">
-        <div>
-          <p class="eyebrow">Free audit</p>
-          <h2>Try it on your actual COIs.</h2>
-          <p>Send up to 10 vendor COIs and your insurance requirements. We’ll return a sample compliance report so you can see exactly what we catch.</p>
-          <ul class="mini-list"><li>No demo required.</li><li>No software rollout.</li><li>No long-term contract.</li></ul>
+        <div class="pricing-note">
+          <strong>Need more than 300 vendors or multiple ownership entities?</strong>
+          <span>Custom monitoring starts at $2,500/mo with scope based on portfolio size, reporting cadence, and vendor follow-up needs.</span>
         </div>
-        <form class="audit-form" id="auditForm" action="https://formspree.io/f/FORM_ID" method="post">
-          <div class="form-live" id="formLive" aria-live="polite"></div>
-          <h3>Request your free COI audit</h3>
-          <p>Tell us where to send the secure upload instructions.</p>
-          <label>Name <span class="required">*</span><input name="name" autocomplete="name" required></label>
-          <label>Work email <span class="required">*</span><input type="email" name="email" autocomplete="email" required></label>
-          <label>Company <span class="required">*</span><input name="company" autocomplete="organization" required></label>
-          <label>Role <span class="optional">optional</span><input name="role" autocomplete="organization-title" placeholder="Property manager, operations director…"></label>
-          <label>Number of properties <span class="optional">optional</span><input name="properties" inputmode="numeric" placeholder="e.g. 12"></label>
-          <label>Approximate number of vendors <span class="optional">optional</span><input name="vendors" inputmode="numeric" placeholder="e.g. 75"></label>
-          <label>Do you have written insurance requirements?
-            <select name="requirements" required>
-              <option value="" selected>Select one</option><option>Yes</option><option>No</option><option>Not sure</option>
-            </select>
-          </label>
-          <label>Message / notes <span class="optional">optional</span><textarea name="message" rows="4" placeholder="Anything we should know about your vendor file?"></textarea></label>
-          <input type="hidden" name="uploadcare_file_urls" id="uploadedFileUrls">
-          <button class="button primary full" type="submit">Continue to upload</button>
-          <p class="form-note">After submitting, you’ll be able to upload up to 10 COIs and your requirements. Your documents are used only to prepare your COI compliance review.</p>
-          <div class="form-success" id="formSuccess" hidden>
-            <p><strong>Audit request received.</strong></p>
-            <p>Now upload up to 10 vendor COIs and your insurance requirements.</p>
-            <button class="button primary full" type="button" id="formUploadButton">Upload COIs</button>
-          </div>
-        </form>
       </div>
     </section>
 
@@ -264,12 +258,13 @@
           <h2>Questions property teams usually ask.</h2>
         </div>
         <div class="faq-list">
-          <details><summary>Is this software?</summary><p>Not at first. We use software internally, but you do not need to implement a platform to get value. Send us the documents. We send back the report.</p></details>
-          <details><summary>Do we need to upload every vendor COI?</summary><p>No. Start with up to 10 COIs for the free audit. If the report is useful, we can review the full vendor file.</p></details>
+          <details><summary>Is this software?</summary><p>COIComply is a managed monitoring service. We use software internally, but customers start by uploading documents and receiving clear reports without a heavy platform rollout.</p></details>
+          <details><summary>Do we need to upload every vendor COI?</summary><p>No. Start with up to 10 vendor files for the free audit. Paid monitoring plans include the initial cleanup of your vendor file and ongoing reporting.</p></details>
           <details><summary>What requirements do you check against?</summary><p>We check against the insurance requirements you provide. These may come from leases, vendor contracts, owner standards, property rules, or internal compliance guidelines.</p></details>
           <details><summary>What if we do not have written requirements?</summary><p>We can still flag obvious issues like expired policies, missing coverage types, incomplete certificates, and upcoming renewals. For final compliance standards, your team should confirm requirements with ownership, legal counsel, broker, or risk manager.</p></details>
           <details><summary>Do you review endorsements?</summary><p>Yes, if endorsements are provided. If a COI references Additional Insured status, Waiver of Subrogation, or Primary and Non-Contributory wording but the actual endorsement is missing, the report will mark it as not confirmed.</p></details>
           <details><summary>How fast is the free audit?</summary><p>Most sample audits are returned within 48 hours after all documents and requirements are received.</p></details>
+          <details><summary>What happens after the free audit?</summary><p>If the report is useful, choose a monthly monitoring plan. The initial cleanup is included, then we keep tracking renewals, missing documents, and exceptions each month.</p></details>
           <details><summary>Is this a legal opinion or insurance coverage determination?</summary><p>No. The report identifies apparent compliance gaps based on the documents provided and the requirements supplied. It is not a legal opinion, coverage determination, or substitute for review by counsel, broker, carrier, or risk manager.</p></details>
         </div>
       </div>
@@ -282,7 +277,7 @@
       <button class="modal-close" type="button" data-close-upload aria-label="Close upload dialog">×</button>
       <p class="eyebrow">Secure upload</p>
       <h2 id="uploadTitle">Upload your COIs</h2>
-      <p id="uploadDescription">Add up to 10 vendor COIs and your insurance requirements. PDF, Excel, Word, and image files are accepted. Max 25MB per file for the POC.</p>
+      <p id="uploadDescription">Add up to 10 vendor COIs and your insurance requirements for the free sample audit. PDF, Excel, Word, and image files are accepted.</p>
       <div class="upload-dropzone" id="uploadDropzone">
         <div class="upload-plus" aria-hidden="true">+</div>
         <strong>Drag files here</strong>
