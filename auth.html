@@ -38,6 +38,13 @@
         <label>Password <span class="required">*</span><input type="password" name="password" autocomplete="current-password" minlength="8" required></label>
         <button class="button primary full" type="submit" id="authSubmit">Sign in</button>
         <p class="form-note" id="authSwitchText">Need an account? <a href="?mode=signup" id="authSwitchLink">Create one</a>.</p>
+        <div class="form-success auth-confirmation" id="verificationPanel" hidden>
+          <p><strong>Check your email to confirm your account.</strong></p>
+          <p id="verificationCopy">We sent a verification link to your work email. Open that link to finish creating your COIComply account, then sign in.</p>
+          <p class="form-note">If you do not see it within a minute or two, check your spam or junk folder.</p>
+          <button class="button secondary full" type="button" id="resendVerificationButton">Resend verification email</button>
+          <a class="button primary full" href="auth.html?mode=signin" id="goToSignInButton">Go to sign in</a>
+        </div>
       </form>
     </div>
   </main>
