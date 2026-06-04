@@ -47,8 +47,20 @@
         <button class="nav-cta nav-logout" id="navLogoutButton" type="button" hidden>Log out</button>
         <button class="nav-upload" id="navUploadButton" type="button" hidden>Upload COIs</button>
         <a class="nav-cta" href="#pricing">View pricing</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
       </div>
     </nav>
+    <div class="mobile-menu container" id="mobileMenu" hidden>
+      <a href="#sample-report">Sample Report</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">View Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-auth-link" href="auth.html">Sign in</a>
+      <a class="nav-auth-link mobile-primary" href="auth.html?mode=signup&next=upload.html">Start free audit</a>
+      <a class="nav-account-link mobile-primary" href="account.html" hidden>Account</a>
+      <a class="nav-account-link" href="upload.html" hidden>Upload COIs</a>
+      <button class="nav-logout" type="button" hidden>Log out</button>
+    </div>
   </header>
 
   <main id="main">

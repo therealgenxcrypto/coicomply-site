@@ -5,6 +5,8 @@
   const dropzone = document.getElementById('uploadDropzone');
   const uploadStatus = document.getElementById('uploadStatus');
   const toast = document.getElementById('toast');
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
 
   let auditRequested = true;
   let lastFocus = null;
@@ -19,6 +21,13 @@
     toast.hidden = false;
     window.clearTimeout(showToast.timer);
     showToast.timer = window.setTimeout(() => { toast.hidden = true; }, 5200);
+  };
+
+  const setMobileMenu = (isOpen) => {
+    if (!mobileMenu || !mobileMenuToggle) return;
+    mobileMenu.hidden = !isOpen;
+    mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('mobile-menu-open', isOpen);
   };
 
   const openUploadModal = () => {
@@ -112,6 +121,12 @@
   };
 
   navUploadButton?.addEventListener('click', openUploadModal);
+  mobileMenuToggle?.addEventListener('click', () => {
+    setMobileMenu(mobileMenu?.hidden);
+  });
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMobileMenu(false));
+  });
   dropzone?.addEventListener('click', openUploadcareDialog);
   dropzone?.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -124,6 +139,7 @@
   document.querySelectorAll('[data-close-upload]').forEach((el) => el.addEventListener('click', closeUploadModal));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !modal.hidden) closeUploadModal();
+    if (event.key === 'Escape') setMobileMenu(false);
   });
 
   if (supabase) {

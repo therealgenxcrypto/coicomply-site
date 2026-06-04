@@ -1,13 +1,13 @@
 (() => {
   const supabase = window.coiSupabase;
-  const logoutButton = document.getElementById('navLogoutButton');
-  const accountLink = document.querySelector('.nav-account-link');
+  const logoutButtons = document.querySelectorAll('.nav-logout');
+  const accountLinks = document.querySelectorAll('.nav-account-link');
   const authLinks = document.querySelectorAll('.nav-auth-link');
 
   const setAuthNav = (isAuthed) => {
     authLinks.forEach((el) => { el.hidden = isAuthed; });
-    if (accountLink) accountLink.hidden = !isAuthed;
-    if (logoutButton) logoutButton.hidden = !isAuthed;
+    accountLinks.forEach((el) => { el.hidden = !isAuthed; });
+    logoutButtons.forEach((el) => { el.hidden = !isAuthed; });
   };
 
   if (!supabase) {
@@ -23,8 +23,8 @@
     setAuthNav(Boolean(session));
   });
 
-  logoutButton?.addEventListener('click', async () => {
+  logoutButtons.forEach((button) => button.addEventListener('click', async () => {
     await supabase.auth.signOut({ scope: 'local' });
     window.location.href = 'index.html';
-  });
+  }));
 })();
