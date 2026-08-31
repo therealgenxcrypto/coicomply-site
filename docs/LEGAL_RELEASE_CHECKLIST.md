@@ -12,7 +12,7 @@ Status: decisions required before public legal pages are finalized.
 - Availability: first 10 property-management customers.
 - Included scope: up to 50 active vendors.
 - Term: month-to-month with no minimum commitment.
-- Billing: Stripe; first charge at activation and recurring charges anchored to the first day of each calendar month.
+- Billing: Stripe; the initial partial month is prorated, followed by the full monthly charge on the first day of each calendar month.
 - Guarantee: cancel within 14 calendar days after activation for any reason and receive a full refund of membership fees paid.
 - Founding price remains locked while continuously active and within the original scope.
 - Service is managed COI administration and reporting, not legal advice, insurance brokerage, underwriting, or a coverage determination.
@@ -23,11 +23,10 @@ Status: decisions required before public legal pages are finalized.
 
 ## Remaining owner or counsel decisions
 
-1. Confirm whether Stripe should prorate the partial first billing period when anchoring future charges to the first day of the month.
-2. Confirm the production file-size limit.
-3. Confirm whether privacy/security requests continue to use hello@coicomply.com.
-4. Confirm whether customers may negotiate a DPA or alternate retention schedule.
-5. Counsel review and approval before the draft is made effective.
+1. Confirm the production file-size limit.
+2. Confirm whether privacy/security requests continue to use hello@coicomply.com.
+3. Confirm whether customers may negotiate a DPA or alternate retention schedule.
+4. Counsel review and approval before the draft is made effective.
 
 ## Terms sections required
 
