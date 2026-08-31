@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Upload COIs | COIComply</title>
-  <meta name="description" content="Upload COIs tied to your COIComply account.">
+  <meta name="description" content="Upload COIs through your authenticated COIComply account.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -34,25 +34,26 @@
   <main class="section">
     <div class="container cta-grid">
       <div>
-        <p class="eyebrow">Protected upload</p>
-        <h2>Upload COIs for your account</h2>
-        <p>These uploads are associated with your authenticated client account and begin your founding membership onboarding.</p>
+        <p class="eyebrow">Authenticated document intake</p>
+        <h2>Upload documents for your account</h2>
+        <p>Your membership must be active before document intake is enabled. Upload only COIs, endorsements, insurance requirements, vendor lists, and related renewal records needed for the service.</p>
+        <p class="form-note">Accepted: PDF, DOCX, XLSX, CSV, PNG, and JPEG. Do not upload executable files, archives, macro-enabled or password-protected documents, or unnecessary sensitive personal information.</p>
       </div>
       <section class="audit-form">
         <h3>Secure upload</h3>
         <div class="trial-panel" aria-live="polite">
-          <p class="panel-label">Initial document intake</p>
+          <p class="panel-label">Document intake</p>
           <div class="trial-meter">
-            <strong id="trialRemainingCount">Checking...</strong>
-            <span id="trialUsageText">Loading your initial upload allowance.</span>
+            <strong id="trialRemainingCount">Checking account...</strong>
+            <span id="trialUsageText">Loading document status.</span>
           </div>
         </div>
         <div class="upload-dropzone" id="uploadDropzone">
           <div class="upload-plus" aria-hidden="true">+</div>
-          <strong>Drag files here</strong>
-          <span>or click to choose files</span>
+          <strong>Choose documents</strong>
+          <span>Upload up to 10 files in each batch</span>
         </div>
-        <div class="upload-status" id="uploadStatus" aria-live="polite">No files uploaded yet.</div>
+        <div class="upload-status" id="uploadStatus" aria-live="polite">No files selected.</div>
       </section>
     </div>
   </main>
