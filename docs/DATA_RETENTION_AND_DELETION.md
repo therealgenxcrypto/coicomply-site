@@ -1,6 +1,6 @@
 # COIComply Data Retention and Deletion
 
-Status: proposed operating standard. Legal and operational approval is required before publication.
+Status: owner-approved operating standard for implementation. Counsel review remains required before publication.
 
 ## Proposed schedule
 
@@ -40,9 +40,8 @@ A legal hold identifies its reason, scope, owner, start date, and review date. R
 - Do not retain public CDN URLs.
 - Do not place document content in support tickets or email unless necessary and specifically approved.
 
-## Decisions to confirm
+## Remaining decisions
 
-- Whether 30 days after termination is operationally sufficient.
 - Whether customers should receive a longer export window.
 - Whether seven-year business-record retention matches accounting and tax requirements.
 - Whether an order form or DPA may establish a different schedule.
