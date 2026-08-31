@@ -24,7 +24,7 @@ async function hmacHex(secret, value) {
   return toHex(await crypto.subtle.sign('HMAC', key, encoder.encode(value)));
 }
 
-async function authenticatedUser(request, env) {
+async function authenticatedIdentity(request, env) {
   const authorization = request.headers.get('Authorization') || '';
   if (!authorization.startsWith('Bearer ')) return null;
 
@@ -36,7 +36,28 @@ async function authenticatedUser(request, env) {
   });
 
   if (!response.ok) return null;
-  return response.json();
+  return { authorization, user: await response.json() };
+}
+
+async function hasActiveUploadAccount(identity, env) {
+  const query = new URL(`${env.SUPABASE_URL}/rest/v1/customer_accounts`);
+  query.searchParams.set('user_id', `eq.${identity.user.id}`);
+  query.searchParams.set('membership_status', 'eq.active');
+  query.searchParams.set('upload_enabled', 'eq.true');
+  query.searchParams.set('select', 'user_id');
+  query.searchParams.set('limit', '1');
+
+  const response = await fetch(query, {
+    headers: {
+      apikey: env.SUPABASE_PUBLISHABLE_KEY,
+      Authorization: identity.authorization,
+      Accept: 'application/json',
+    },
+  });
+  if (!response.ok) return false;
+
+  const rows = await response.json();
+  return Array.isArray(rows) && rows.length === 1;
 }
 
 function hasApprovedOrigin(request, env) {
@@ -63,9 +84,13 @@ export async function onRequestPost({ request, env }) {
     return json({ error: 'Secure upload is not configured.' }, 503);
   }
 
-  const user = await authenticatedUser(request, env);
-  if (!user?.id) {
+  const identity = await authenticatedIdentity(request, env);
+  if (!identity?.user?.id) {
     return json({ error: 'Authentication required.' }, 401);
+  }
+
+  if (!(await hasActiveUploadAccount(identity, env))) {
+    return json({ error: 'Document upload is not enabled for this account.' }, 403);
   }
 
   // Uploadcare signed-upload signatures are HMAC-SHA256(secret, expire).
