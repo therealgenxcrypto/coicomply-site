@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document Handling | COIComply</title>
-  <meta name="description" content="How COIComply handles uploaded COI documents.">
-  <link rel="canonical" href="https://coicomply.com/security.html">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Document Handling Draft | COIComply</title>
+  <meta name="description" content="Draft COIComply document handling practices for review.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -19,30 +19,51 @@
 
   <main class="section legal-section">
     <article class="container legal-page">
-      <p class="eyebrow">Trust</p>
+      <p class="eyebrow">Trust draft</p>
       <h1>Document Handling</h1>
-      <p class="legal-updated">Effective June 4, 2026</p>
+      <p class="legal-updated"><strong>Draft target standard. Not yet effective.</strong></p>
 
       <h2>Purpose</h2>
-      <p>COIComply receives vendor COIs and related insurance documents so we can prepare compliance reports and monitoring summaries for property teams.</p>
+      <p>COIComply receives vendor COIs, endorsements, insurance requirements, vendor lists, renewal documents, and related notes to provide managed COI review and monitoring for property teams.</p>
 
       <h2>What To Upload</h2>
-      <p>Upload only the documents needed for COI review, such as COIs, endorsements, insurance requirements, vendor lists, renewal documents, and related notes. Do not upload unnecessary sensitive personal information.</p>
+      <p>Upload only records needed for the service. Proposed accepted formats are PDF, DOCX, XLSX, CSV, PNG, and JPEG, subject to file-size limits displayed during upload.</p>
+      <p>Do not upload executable or script files, archives, macro-enabled Office files, password-protected files, malware, unlawful content, or documents you are not authorized to provide. Do not include Social Security numbers, bank information, medical information, driver-license data, unrelated employee files, or other sensitive information unnecessary for COI review.</p>
+
+      <h2>Authenticated Intake</h2>
+      <p>The target production workflow requires the customer to sign in before uploading. The browser receives only a short-lived upload authorization. Upload-provider secrets and administrative credentials remain in server-side encrypted configuration.</p>
+
+      <h2>Private Document Delivery</h2>
+      <p>The target production workflow stores a document identifier rather than a publicly usable document URL. Access requires authentication, an ownership or approved staff authorization check, and a time-limited delivery link. Public unsigned delivery will be disabled before this standard is represented as active.</p>
 
       <h2>Access</h2>
-      <p>Uploaded documents are used for account setup, COI review, report preparation, support, service improvement, security, and administration. Access is intended to be limited to people and service providers who need it for those purposes.</p>
+      <p>Access is limited to authorized customer users, COIComply personnel and contractors who need the information to provide the service, and providers supporting the workflow. Administrative access is separated from ordinary customer access and should use multifactor authentication.</p>
 
-      <h2>Service Providers</h2>
-      <p>COIComply currently uses third-party providers such as Supabase, Uploadcare, Resend, GitHub Pages, and Cloudflare to operate the service. These providers help with authentication, document upload, email, hosting, and infrastructure.</p>
+      <h2>How Documents Are Used</h2>
+      <p>Documents are used to organize the vendor file, compare apparent information against customer-supplied requirements, prepare and review reports, monitor renewals and exceptions, conduct authorized vendor follow-up, provide support, protect the service, and meet legal obligations.</p>
+      <p>Software and automated extraction may assist the work. A human reviews reports before delivery. Customer documents are not sold, used for advertising profiles, or used to train general-purpose artificial-intelligence models.</p>
 
-      <h2>Security Limits</h2>
-      <p>We use reasonable safeguards, but no online service can guarantee perfect security, uninterrupted availability, or permanent data preservation. Customers should keep their own copies of documents and should not rely on COIComply as the only record repository.</p>
+      <h2>Safety Checks</h2>
+      <p>The target workflow validates allowed file types and sizes and supports quarantine for files awaiting automated or manual safety checks. A suspicious file is not made available through the normal review workflow until cleared. COIComply does not email customer document attachments as routine confirmation messages.</p>
 
-      <h2>Reports</h2>
-      <p>Reports are based on the documents and requirements provided. Reports are not legal opinions, insurance advice, coverage determinations, or guarantees that a vendor is insured or compliant.</p>
+      <h2>Providers</h2>
+      <p>The target architecture uses Cloudflare for hosting and the same-origin application boundary, Supabase for authentication and document metadata, Uploadcare for signed document ingestion and private delivery, Resend for transactional email, and GitHub for source control. Providers may change, and COIComply will maintain a current subprocessor list.</p>
 
-      <h2>Customer Responsibility</h2>
-      <p>You are responsible for deciding whether a vendor may work, whether a COI is acceptable, whether to request more documents, and whether to consult counsel, a broker, a carrier, an owner, or a risk manager before acting.</p>
+      <h2>Retention and Deletion</h2>
+      <p>The proposed standard retains documents while needed for active monitoring. After termination or a verified deletion request, access is disabled promptly and documents are deleted from primary storage within 30 days unless a legal hold or different written agreement applies. Residual encrypted backups may remain until normal provider cycles expire, targeted within 90 days.</p>
+      <p>Customers should maintain their own authoritative copies. COIComply is not the customer’s system of record or permanent archive.</p>
+
+      <h2>Security Events</h2>
+      <p>COIComply maintains an internal incident-response process for containment, investigation, remediation, provider coordination, and notification analysis. If an event requires customer notice, COIComply will provide notice consistent with applicable law and contractual obligations.</p>
+
+      <h2>Reports and Decisions</h2>
+      <p>Reports reflect apparent information in supplied documents and requirements at the time of review. They are not legal opinions, insurance advice, brokerage services, coverage determinations, or guarantees that a vendor is insured or compliant. Customers remain responsible for vendor approval, scheduling, contracting, and risk decisions.</p>
+
+      <h2>Questions and Requests</h2>
+      <p>To report a suspected security issue or request document deletion, email <a href="mailto:hello@coicomply.com">hello@coicomply.com</a>. COIComply may verify identity and organizational authority before acting.</p>
+
+      <h2>Honest Limits</h2>
+      <p>No online service can guarantee perfect security, uninterrupted availability, or permanent preservation. This page will be made effective only after the described production controls are implemented and tested.</p>
     </article>
   </main>
 </body>
