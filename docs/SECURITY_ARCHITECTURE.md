@@ -1,7 +1,8 @@
 # COIComply Security Architecture
 
-Status: implementation design for review  
-Branch: `security-legal-architecture-v2`  
+Status: implementation design for review
+
+Branch: `security-legal-architecture-v2`
 Production impact: none until merged and deployed
 
 ## Security objective
