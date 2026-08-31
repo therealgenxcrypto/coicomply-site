@@ -2,30 +2,32 @@
 
 Status: decisions required before public legal pages are finalized.
 
-## Established commercial terms
+## Established commercial and legal terms
 
+- Operator: Turnum LLC, a New Mexico limited liability company.
+- Notice address: 1209 Mountain Road Pl NE Ste N, Albuquerque, NM 87110, United States.
+- Governing law: New Mexico.
+- Venue: state courts in Bernalillo County or, when federal jurisdiction exists, the United States District Court for the District of New Mexico.
 - Founding membership: $499 per month.
 - Availability: first 10 property-management customers.
 - Included scope: up to 50 active vendors.
-- Initial engagement: 90 days, then month-to-month.
+- Term: month-to-month with no minimum commitment.
+- Billing: Stripe; first charge at activation and recurring charges anchored to the first day of each calendar month.
+- Guarantee: cancel within 14 calendar days after activation for any reason and receive a full refund of membership fees paid.
 - Founding price remains locked while continuously active and within the original scope.
-- Guarantee: notify COIComply within seven days after the first completed compliance report to receive a refund of the first month.
 - Service is managed COI administration and reporting, not legal advice, insurance brokerage, underwriting, or a coverage determination.
 - Reports are human-reviewed before delivery.
 - Customer documents are not used to train general-purpose models.
+- Customer-document review uses no overseas personnel or contractors.
+- Primary document deletion within 30 days after termination or verified request; residual backups targeted to expire within 90 days.
 
-## Owner decisions required
+## Remaining owner or counsel decisions
 
-1. Exact legal entity name and entity type.
-2. Principal business mailing address.
-3. State of organization.
-4. Governing law and exclusive venue.
-5. Billing method and invoice due date.
-6. Cancellation method and any billing cutoff.
-7. File-size limit and accepted types.
-8. Privacy/security contact if different from hello@coicomply.com.
-9. Whether customers may negotiate a DPA or alternate retention schedule.
-10. Whether contractors outside the United States may access documents.
+1. Confirm whether Stripe should prorate the partial first billing period when anchoring future charges to the first day of the month.
+2. Confirm the production file-size limit.
+3. Confirm whether privacy/security requests continue to use hello@coicomply.com.
+4. Confirm whether customers may negotiate a DPA or alternate retention schedule.
+5. Counsel review and approval before the draft is made effective.
 
 ## Terms sections required
 
