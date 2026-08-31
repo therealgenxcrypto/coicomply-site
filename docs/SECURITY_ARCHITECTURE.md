@@ -86,6 +86,7 @@ The exposed `public` schema uses explicit grants and RLS. Customer policies incl
 - Do not email attachments.
 - Do not put filenames, policy numbers, vendor names, or URLs in logs.
 - Do not use customer documents to train general-purpose models.
+- Use only United States-based personnel and contractors for human document review.
 - Use document content only for the contracted service, support, security, and legal obligations.
 
 ## Account controls
