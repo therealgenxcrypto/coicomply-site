@@ -26,10 +26,10 @@
   const renderTrialState = () => {
     const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
     trialRemainingCount.textContent = `${remaining} upload${remaining === 1 ? '' : 's'} remaining`;
-    trialUsageText.textContent = `${Math.min(uploadCount, TRIAL_LIMIT)} of ${TRIAL_LIMIT} free trial uploads used.`;
+    trialUsageText.textContent = `${Math.min(uploadCount, TRIAL_LIMIT)} of ${TRIAL_LIMIT} initial uploads used.`;
     if (remaining === 0) {
       dropzone.classList.add('is-disabled');
-      status.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
+      status.textContent = 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.';
       return;
     }
     dropzone.classList.remove('is-disabled');
@@ -69,7 +69,7 @@
     const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
     if (remaining === 0) {
       renderTrialState();
-      showToast('Your free trial upload limit has already been reached.');
+      showToast('Your initial upload limit has already been reached.');
       return;
     }
 
@@ -97,7 +97,7 @@
         }
 
         if (files.length > remaining) {
-          status.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining free trial allowance.`;
+          status.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining initial upload allowance.`;
           return;
         }
 
@@ -112,7 +112,7 @@
         const { error } = await supabase.from('document_uploads').insert(payload);
         if (error) {
           const limitMessage = error.message.toLowerCase().includes('free trial upload limit')
-            ? 'Your free trial upload limit has been reached. We will review the documents already received.'
+            ? 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.'
             : `Upload saved by provider, but account link failed: ${error.message}`;
           status.textContent = limitMessage;
           return;
