@@ -4,10 +4,10 @@
   const status = document.getElementById('uploadStatus');
   const toast = document.getElementById('toast');
   const logout = document.getElementById('logoutButton');
-  const trialRemainingCount = document.getElementById('trialRemainingCount');
-  const trialUsageText = document.getElementById('trialUsageText');
+  const intakeBatchCount = document.getElementById('trialRemainingCount');
+  const intakeUsageText = document.getElementById('trialUsageText');
 
-  const TRIAL_LIMIT = 10;
+  const BATCH_LIMIT = 10;
   let currentUser = null;
   let uploadCount = 0;
 
@@ -19,21 +19,15 @@
   };
 
   if (!supabase) {
-    status.textContent = 'Supabase is not configured.';
+    status.textContent = 'Account service is not configured.';
     return;
   }
 
-  const renderTrialState = () => {
-    const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
-    trialRemainingCount.textContent = `${remaining} upload${remaining === 1 ? '' : 's'} remaining`;
-    trialUsageText.textContent = `${Math.min(uploadCount, TRIAL_LIMIT)} of ${TRIAL_LIMIT} initial uploads used.`;
-    if (remaining === 0) {
-      dropzone.classList.add('is-disabled');
-      status.textContent = 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.';
-      return;
-    }
+  const renderIntakeState = () => {
+    intakeBatchCount.textContent = `Up to ${BATCH_LIMIT} files per upload`;
+    intakeUsageText.textContent = `${uploadCount} file${uploadCount === 1 ? '' : 's'} currently linked to your account.`;
     dropzone.classList.remove('is-disabled');
-    status.textContent = `Ready for up to ${remaining} more file${remaining === 1 ? '' : 's'}.`;
+    status.textContent = 'Ready for your next document batch.';
   };
 
   const refreshUploadCount = async () => {
@@ -44,12 +38,31 @@
       .eq('user_id', currentUser.id);
 
     if (error) {
-      status.textContent = `Could not load upload allowance: ${error.message}`;
+      status.textContent = 'Could not load your document intake status.';
       return;
     }
 
     uploadCount = count || 0;
-    renderTrialState();
+    renderIntakeState();
+  };
+
+  const getUploadAuthorization = async () => {
+    const { data } = await supabase.auth.getSession();
+    const token = data.session?.access_token;
+    if (!token) throw new Error('Authentication required.');
+
+    const response = await fetch('/api/upload/signature', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.error || 'Secure upload is not available.');
+    }
+    return response.json();
   };
 
   logout?.addEventListener('click', async () => {
@@ -66,16 +79,25 @@
       window.location.href = 'auth.html?mode=signin&next=upload.html';
       return;
     }
-    const remaining = Math.max(TRIAL_LIMIT - uploadCount, 0);
-    if (remaining === 0) {
-      renderTrialState();
-      showToast('Your initial upload limit has already been reached.');
+
+    dropzone.classList.add('is-disabled');
+    status.textContent = 'Authorizing secure upload...';
+
+    let authorization;
+    try {
+      authorization = await getUploadAuthorization();
+    } catch (error) {
+      dropzone.classList.remove('is-disabled');
+      status.textContent = error.message;
       return;
     }
 
     const dialog = window.uploadcare.openDialog(null, {
+      publicKey: authorization.publicKey,
+      secureSignature: authorization.secureSignature,
+      secureExpire: authorization.secureExpire,
       multiple: true,
-      multipleMax: remaining,
+      multipleMax: BATCH_LIMIT,
       imagesOnly: false,
       tabs: 'file gdrive dropbox',
     });
@@ -85,46 +107,46 @@
     dialog.done((fileGroup) => {
       fileGroup.promise().done(async (groupInfo) => {
         const files = (groupInfo.files || []).map((file) => ({
-          cdn_url: file.cdnUrl,
-          original_filename: file.name || null,
+          uploadcare_uuid: file.uuid || null,
+          filename: file.name || null,
+          mime_type: file.mimeType || null,
           size_bytes: file.size || null,
-          uploaded_at: new Date().toISOString(),
-        })).filter((file) => file.cdn_url);
+        })).filter((file) => file.uploadcare_uuid);
 
         if (!files.length) {
+          dropzone.classList.remove('is-disabled');
           status.textContent = 'No files were received.';
           return;
         }
 
-        if (files.length > remaining) {
-          status.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining initial upload allowance.`;
-          return;
-        }
-
-        const payload = files.map((f) => ({
+        const payload = files.map((file) => ({
           user_id: currentUser.id,
-          uploadcare_cdn_url: f.cdn_url,
-          filename: f.original_filename,
-          size_bytes: f.size_bytes,
-          source: 'uploadcare',
+          uploadcare_uuid: file.uploadcare_uuid,
+          uploadcare_cdn_url: null,
+          filename: file.filename,
+          mime_type: file.mime_type,
+          size_bytes: file.size_bytes,
+          source: 'signed_uploadcare',
+          status: 'received',
         }));
 
         const { error } = await supabase.from('document_uploads').insert(payload);
         if (error) {
-          const limitMessage = error.message.toLowerCase().includes('free trial upload limit')
-            ? 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.'
-            : `Upload saved by provider, but account link failed: ${error.message}`;
-          status.textContent = limitMessage;
+          dropzone.classList.remove('is-disabled');
+          status.textContent = 'Files reached secure intake, but account registration needs attention. Please contact COIComply.';
           return;
         }
 
         uploadCount += files.length;
-        renderTrialState();
         window.localStorage.setItem('coi_last_upload_confirmation', JSON.stringify({
           count: files.length,
-          files: payload,
+          files: files.map((file) => ({
+            filename: file.filename,
+            size_bytes: file.size_bytes,
+          })),
           created_at: new Date().toISOString(),
         }));
+
         status.innerHTML = `<strong>${files.length} file${files.length === 1 ? '' : 's'} linked to your account.</strong><br>Opening your confirmation receipt...`;
         showToast('Files uploaded and linked to your account.');
         window.location.href = `confirmation.html?files=${files.length}`;
@@ -132,6 +154,7 @@
     });
 
     dialog.fail(() => {
+      dropzone.classList.remove('is-disabled');
       status.textContent = 'Upload cancelled. No files were sent.';
     });
   };
