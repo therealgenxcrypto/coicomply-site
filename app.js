@@ -36,13 +36,13 @@
       return;
     }
     if (remainingUploads() === 0) {
-      uploadStatus.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
-      showToast('Your free trial upload limit has already been reached.');
+      uploadStatus.textContent = 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.';
+      showToast('Your initial upload limit has already been reached.');
       return;
     }
     if (!auditRequested) {
       document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      showToast('Start with the free audit account. Then upload your COIs.');
+      showToast('Sign in to your client account to upload COIs.');
       return;
     }
     lastFocus = document.activeElement;
@@ -66,7 +66,7 @@
     }
     const remaining = remainingUploads();
     if (remaining === 0) {
-      uploadStatus.textContent = 'Your free trial upload limit has been reached. We will review the documents already received.';
+      uploadStatus.textContent = 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.';
       return;
     }
 
@@ -83,7 +83,7 @@
       fileGroup.promise().done(async (groupInfo) => {
         const urls = (groupInfo.files || []).map((file) => file.cdnUrl).filter(Boolean);
         if (urls.length > remaining) {
-          uploadStatus.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining free trial allowance.`;
+          uploadStatus.textContent = `Please upload no more than ${remaining} file${remaining === 1 ? '' : 's'} for the remaining initial upload allowance.`;
           return;
         }
         if (supabase && activeUserId && urls.length) {
@@ -97,7 +97,7 @@
           const { error } = await supabase.from('document_uploads').insert(payload);
           if (error) {
             uploadStatus.textContent = error.message.toLowerCase().includes('free trial upload limit')
-              ? 'Your free trial upload limit has been reached. We will review the documents already received.'
+              ? 'Your initial upload limit has been reached. We will review the documents already received and confirm the next intake step.'
               : `Upload provider succeeded but account association failed: ${error.message}`;
             return;
           }
