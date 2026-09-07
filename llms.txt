@@ -8,7 +8,7 @@ COIComply provides private, human-reviewed certificate of insurance compliance r
 
 ## What COIComply Does
 
-COIComply reviews vendor certificates of insurance against customer-provided insurance requirements and returns a plain-English report showing compliant vendors, expired policies, missing coverage, missing endorsements, renewal issues, and recommended next actions.
+COIComply reviews vendor certificates of insurance against customer-provided insurance requirements and returns a plain-English report showing which supplied documents appear to meet customer requirements, expired policies, missing coverage, missing endorsements, renewal issues, and recommended next actions.
 
 ## Audience
 
