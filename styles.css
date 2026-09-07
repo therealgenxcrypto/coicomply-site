@@ -113,6 +113,9 @@ body{background:#fff;color:var(--text)}
 .nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap;background:var(--petrol);border-color:var(--petrol);color:#fff}
 .nav-contact:hover{background:var(--petrol-hover);border-color:var(--petrol-hover);color:#fff}
 .nav-contact:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}
+.brand-logo{display:block;width:180px;height:44px;object-fit:cover;object-position:center 45%;mix-blend-mode:multiply}
+.brand:has(.brand-logo){flex-shrink:0}
+@media (max-width:640px){.nav .brand-logo{width:128px;height:34px}}
 @media (max-width:640px){.nav .nav-contact{display:inline-flex}.nav{gap:10px}}
 @media (max-width:380px){.nav-actions{gap:6px}.nav .nav-contact,.nav .mobile-menu-toggle{font-size:12px;padding:9px 8px}.nav .brand{gap:6px}.nav .brand-mark{width:24px;height:24px}}
 @media (max-width:640px){.founding-card{padding:24px}.founding-card .price-list{grid-template-columns:1fr}.founding-card>a{width:100%}.founding-terms,.founding-guarantee{text-align:left}}
