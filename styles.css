@@ -110,17 +110,9 @@ body{background:#fff;color:var(--text)}
 .founding-card>a:hover{background:var(--petrol-hover)}
 .founding-terms,.founding-guarantee{width:min(760px,100%);margin-inline:auto}
 .founding-guarantee{background:#f0f7f7}
-.nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap}
+.nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap;background:var(--petrol);border-color:var(--petrol);color:#fff}
+.nav-contact:hover{background:var(--petrol-hover);border-color:var(--petrol-hover);color:#fff}
 .nav-contact:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}
-.contact-options{position:relative}
-.contact-options summary{cursor:pointer;list-style:none}
-.contact-options summary::-webkit-details-marker{display:none}
-.contact-options[open] summary{background:var(--petrol-mist);border-color:var(--petrol)}
-.contact-panel{position:absolute;top:calc(100% + 10px);right:0;width:min(280px,calc(100vw - 90px));padding:8px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
-.contact-panel a{display:flex;flex-direction:column;gap:3px;padding:12px;border-radius:10px;color:var(--text)}
-.contact-panel a:hover,.contact-panel a:focus-visible{background:var(--petrol-mist)}
-.contact-panel a:focus-visible{outline:2px solid var(--petrol);outline-offset:-2px}
-.contact-panel strong{font-size:14px}.contact-panel span{font-size:13px;color:var(--muted)}
 @media (max-width:640px){.nav .nav-contact{display:inline-flex}.nav{gap:10px}}
 @media (max-width:380px){.nav-actions{gap:6px}.nav .nav-contact,.nav .mobile-menu-toggle{font-size:12px;padding:9px 8px}.nav .brand{gap:6px}.nav .brand-mark{width:24px;height:24px}}
 @media (max-width:640px){.founding-card{padding:24px}.founding-card .price-list{grid-template-columns:1fr}.founding-card>a{width:100%}.founding-terms,.founding-guarantee{text-align:left}}
