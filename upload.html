@@ -3,60 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Upload COIs | COIComply</title>
-  <meta name="description" content="Upload COIs tied to your COIComply account.">
+  <title>Upload documents | COIComply</title>
+  <meta name="description" content="Send documents to COIComply through our private Dropbox file request.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/favicon.svg?v=compact" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=20260907-smaller-logo">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
-  <script src="auth.js"></script>
-  <script src="protected.js"></script>
-  <script>
-    window.UPLOADCARE_PUBLIC_KEY = '8be87f4a194c54b843e3';
-    window.UPLOADCARE_LOCALE = 'en';
-    window.UPLOADCARE_TABS = 'file gdrive dropbox';
-    window.UPLOADCARE_MULTIPLE = true;
-    window.UPLOADCARE_MULTIPLE_MAX = 10;
-  </script>
-  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" defer></script>
 </head>
-<body data-protected="true">
+<body>
   <header class="site-header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Primary navigation">
       <a class="brand" href="index.html"><img class="brand-logo" src="assets/coicomply-compact-tight.png" alt="coi comply" width="121" height="29"></a>
-      <div class="nav-actions">
-        <a class="nav-cta" href="account.html">Account</a>
-        <button class="nav-cta nav-logout" id="logoutButton" type="button">Log out</button>
-      </div>
+      <div class="nav-actions"><a class="nav-cta nav-contact" href="mailto:hello@coicomply.com">Contact us</a></div>
     </nav>
   </header>
   <main class="section">
     <div class="container cta-grid">
       <div>
-        <p class="eyebrow">Protected upload</p>
-        <h2>Upload COIs for your account</h2>
-        <p>These uploads are associated with your authenticated client account and begin your founding membership onboarding.</p>
+        <p class="eyebrow">Document intake</p>
+        <h1>Send your documents</h1>
+        <p>Once COIComply confirms your onboarding, send your COIs, endorsements, and insurance requirements through our Dropbox file request.</p>
+        <p>Include your company name in each filename and use your business email so we can identify your submission.</p>
       </div>
-      <section class="audit-form">
-        <h3>Secure upload</h3>
-        <div class="trial-panel" aria-live="polite">
-          <p class="panel-label">Initial document intake</p>
-          <div class="trial-meter">
-            <strong id="trialRemainingCount">Checking...</strong>
-            <span id="trialUsageText">Loading your initial upload allowance.</span>
-          </div>
-        </div>
-        <div class="upload-dropzone" id="uploadDropzone">
-          <div class="upload-plus" aria-hidden="true">+</div>
-          <strong>Drag files here</strong>
-          <span>or click to choose files</span>
-        </div>
-        <div class="upload-status" id="uploadStatus" aria-live="polite">No files uploaded yet.</div>
+      <section class="audit-form" aria-labelledby="upload-title">
+        <h2 id="upload-title">Upload to COIComply</h2>
+        <p>No Dropbox account is required. Your files go to a private folder. The upload link does not let other customers browse or download your documents.</p>
+        <p><a class="nav-cta nav-contact" href="https://www.dropbox.com/request/swg2r5isj3m1x3nkncje" rel="noreferrer">Continue to Dropbox</a></p>
+        <p class="form-note">Wait for Dropbox to confirm your upload. Dropbox submissions do not appear in the upload counts in your COIComply account.</p>
+        <p class="form-note">Questions? Email <a href="mailto:hello@coicomply.com">hello@coicomply.com</a>. Please use the upload link for documents rather than email attachments.</p>
+        <p class="form-note">See our <a href="privacy.html">Privacy Policy</a> and <a href="security.html">Document Handling Policy</a>.</p>
       </section>
     </div>
   </main>
-  <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
-  <script src="upload-page.js" defer></script>
 </body>
 </html>

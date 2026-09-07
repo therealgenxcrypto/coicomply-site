@@ -16,14 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="auth.js"></script>
-  <script>
-    window.UPLOADCARE_PUBLIC_KEY = '8be87f4a194c54b843e3';
-    window.UPLOADCARE_LOCALE = 'en';
-    window.UPLOADCARE_TABS = 'file gdrive dropbox';
-    window.UPLOADCARE_MULTIPLE = true;
-    window.UPLOADCARE_MULTIPLE_MAX = 10;
-  </script>
-  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" defer></script>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -43,7 +36,7 @@
         <a class="nav-cta nav-auth-link" href="auth.html">Sign in</a>
         <a class="nav-cta nav-account-link" href="account.html" hidden>Account</a>
         <button class="nav-cta nav-logout" id="navLogoutButton" type="button" hidden>Log out</button>
-        <button class="nav-upload" id="navUploadButton" type="button" hidden>Upload COIs</button>
+        <a class="nav-upload" href="upload.html">Upload COIs</a>
         <a class="nav-cta" href="#pricing">View pricing</a>
         <a class="nav-cta nav-contact" href="mailto:hello@coicomply.com">Contact us</a>
         <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
@@ -57,7 +50,7 @@
       <a class="nav-auth-link" href="auth.html">Sign in</a>
       <a class="mobile-primary" href="mailto:hello@coicomply.com?subject=COIComply%20Founding%20Membership">Start founding membership</a>
       <a class="nav-account-link mobile-primary" href="account.html" hidden>Account</a>
-      <a class="nav-account-link" href="upload.html" hidden>Upload COIs</a>
+      <a href="upload.html">Upload COIs</a>
       <button class="nav-logout" type="button" hidden>Log out</button>
     </div>
   </header>
@@ -217,7 +210,7 @@
         </div>
         <ol class="steps">
           <li><span>1</span><h3>Join the founding membership</h3><p>We confirm your requirements, active vendors, and onboarding scope.</p></li>
-          <li><span>2</span><h3>Send your vendor files</h3><p>Upload your COIs, endorsements, and insurance requirements through your secure account.</p></li>
+          <li><span>2</span><h3>Send your vendor files</h3><p>Upload your COIs, endorsements, and insurance requirements through our Dropbox upload request.</p></li>
           <li><span>3</span><h3>We clean up and manage the file</h3><p>We review coverage, identify gaps, follow up with vendors, and track renewals.</p></li>
           <li><span>4</span><h3>You get clear recurring reports</h3><p>Clear status. Clear issue. Clear next step.</p></li>
         </ol>
@@ -310,26 +303,6 @@
     </section>
   </main>
 
-  <div class="upload-modal" id="uploadModal" hidden aria-hidden="true">
-    <div class="modal-backdrop" data-close-upload></div>
-    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="uploadTitle" aria-describedby="uploadDescription">
-      <button class="modal-close" type="button" data-close-upload aria-label="Close upload dialog">×</button>
-      <p class="eyebrow">Secure upload</p>
-      <h2 id="uploadTitle">Upload your COIs</h2>
-      <p id="uploadDescription">Add an initial batch of up to 10 vendor COIs and your insurance requirements. PDF, Excel, Word, and image files are accepted.</p>
-      <div class="upload-dropzone" id="uploadDropzone">
-        <div class="upload-plus" aria-hidden="true">+</div>
-        <strong>Drag files here</strong>
-        <span>or click to choose files</span>
-      </div>
-      <input type="hidden" role="uploadcare-uploader" id="uploadcareWidget" data-multiple="true" data-multiple-max="10" data-clearable="true" data-images-only="false">
-      <div class="upload-status" id="uploadStatus" aria-live="polite">No files uploaded yet.</div>
-      <p class="form-note">Your documents are used only to prepare your COI compliance review. Reports are not legal opinions or coverage determinations.</p>
-    </section>
-  </div>
-
-  <div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -345,6 +318,6 @@
     </div>
   </footer>
   <script src="auth-ui.js?v=mobile-menu-1" defer></script>
-  <script src="app.js?v=mobile-menu-1" defer></script>
+  <script src="app.js?v=dropbox-20260907" defer></script>
 </body>
 </html>
