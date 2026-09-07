@@ -110,4 +110,8 @@ body{background:#fff;color:var(--text)}
 .founding-card>a:hover{background:var(--petrol-hover)}
 .founding-terms,.founding-guarantee{width:min(760px,100%);margin-inline:auto}
 .founding-guarantee{background:#f0f7f7}
+.nav-contact{display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap}
+.nav-contact:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}
+@media (max-width:640px){.nav .nav-contact{display:inline-flex}.nav{gap:10px}}
+@media (max-width:380px){.nav-actions{gap:6px}.nav .nav-contact,.nav .mobile-menu-toggle{font-size:12px;padding:9px 8px}.nav .brand{gap:6px}.nav .brand-mark{width:24px;height:24px}}
 @media (max-width:640px){.founding-card{padding:24px}.founding-card .price-list{grid-template-columns:1fr}.founding-card>a{width:100%}.founding-terms,.founding-guarantee{text-align:left}}
